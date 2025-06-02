@@ -11,7 +11,7 @@ class SplashScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     // Delay selama 3 detik, lalu pindah ke halaman berikutnya
     Timer(Duration(seconds: 3), () {
-      Get.offAllNamed(Routes.HOME);  // Ganti dengan rute tujuanmu
+      Get.offNamed(Routes.ON_BOARDING_SCREEN1);  // Ganti dengan rute tujuanmu
     });
 
     return Scaffold(

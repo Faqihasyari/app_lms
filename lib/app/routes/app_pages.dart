@@ -1,3 +1,4 @@
+import 'package:app_lms/app/modules/splash/view/on_boarding_screen1.dart';
 import 'package:get/get.dart';
 import '../modules/home/views/home_view.dart';
 import '../modules/splash/view/splash_screen.dart';
@@ -15,8 +16,8 @@ class AppPages {
       page: () => const SplashScreen(),
     ),
     GetPage(
-      name: _Paths.HOME,
-      page: () => const HomeView(),
+      name: _Paths.ON_BOARDING_SCREEN1,
+      page: () => const OnBoarding(),
     ),
   ];
 }
