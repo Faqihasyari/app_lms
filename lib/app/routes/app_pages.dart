@@ -17,7 +17,7 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.ON_BOARDING_SCREEN1,
-      page: () => const OnBoarding(),
+      page: () =>  OnBoarding(),
     ),
   ];
 }
