@@ -6,9 +6,9 @@ import 'package:flutter/widgets.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class OnBoarding extends StatefulWidget {
-   OnBoarding({super.key});
-   final OnboardingController controller = Get.put(OnboardingController());
-   final List<Map<String, String>> onboardingData = [
+  OnBoarding({super.key});
+  final OnboardingController controller = Get.put(OnboardingController());
+  final List<Map<String, String>> onboardingData = [
     {
       'image': 'assets/images/on_boarding/Isolation_Mode-1.png',
       'title': 'Welcome to Cybex IT Group\nwhere learning meets innovation!',
@@ -18,17 +18,21 @@ class OnBoarding extends StatefulWidget {
     {
       'image': 'assets/images/on_boarding/Isolation_Mode.png',
       'title': 'Begin your learning journey and unlock a world of knowledge',
-      'subtitle': 'Explore our comprehensive courses\ndesigned to transform your skills and\ncareer',
+      'subtitle':
+          'Explore our comprehensive courses\ndesigned to transform your skills and\ncareer',
     },
     {
       'image': 'assets/images/on_boarding/Layer_1.png',
       'title': 'Dive into a seamless learning\nexperience with Cybex IT Group',
-      'subtitle': 'Experience interactive learning with\nexpert-led courses and progress\ntracking',
+      'subtitle':
+          'Experience interactive learning with\nexpert-led courses and progress\ntracking',
     },
     {
       'image': 'assets/images/on_boarding/Frame.png',
-      'title': 'Join a community of learners and\nembark on a learning adventure',
-      'subtitle': 'Connect with like-minded individuals\nJoin us to learn, grow, and thrive\ntogether!',
+      'title':
+          'Join a community of learners and\nembark on a learning adventure',
+      'subtitle':
+          'Connect with like-minded individuals\nJoin us to learn, grow, and thrive\ntogether!',
     },
   ];
   @override
@@ -44,13 +48,42 @@ class _OnBoardingState extends State<OnBoarding> {
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          Expanded(child: PageView.builder(
+          Expanded(
+              child: PageView.builder(
             controller: widget.controller.pageController,
             onPageChanged: widget.controller.onPageChanged,
             itemCount: widget.onboardingData.length,
             itemBuilder: (context, index) {
-            
-          },)),
+              return Padding(
+                padding: EdgeInsets.all(12),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Image.asset(
+                      widget.onboardingData[index]['image']!,
+                    ),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    Text(
+                      widget.onboardingData[index]['title']!,
+                      textAlign: TextAlign.center,
+                      style: GoogleFonts.plusJakartaSans(
+                          fontSize: 22, fontWeight: FontWeight.w600),
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    Text(
+                      widget.onboardingData[index]['subtitle']!,
+                      textAlign: TextAlign.center,
+                      style: GoogleFonts.plusJakartaSans(fontSize: 16),
+                    )
+                  ],
+                ),
+              );
+            },
+          )),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 80),
             child: ElevatedButton(
