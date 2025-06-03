@@ -6,7 +6,7 @@ class OnboardingController extends GetxController {
   var currentPage = 0.obs;
 
   void nextPage() {
-    if (currentPage.value < 2) {
+    if (currentPage.value < 3) {
       pageController.nextPage(
         duration: Duration(milliseconds: 300),
         curve: Curves.easeInOut,

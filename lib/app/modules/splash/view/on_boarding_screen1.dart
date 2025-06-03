@@ -48,46 +48,69 @@ class _OnBoardingState extends State<OnBoarding> {
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          Expanded(
-              child: PageView.builder(
-            controller: widget.controller.pageController,
-            onPageChanged: widget.controller.onPageChanged,
-            itemCount: widget.onboardingData.length,
-            itemBuilder: (context, index) {
-              return Padding(
-                padding: EdgeInsets.all(12),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Image.asset(
-                      widget.onboardingData[index]['image']!,
+          SizedBox(
+            height: MediaQuery.of(context).size.height * 0.74,
+            child: PageView.builder(
+              controller: widget.controller.pageController,
+              onPageChanged: widget.controller.onPageChanged,
+              itemCount: widget.onboardingData.length,
+              itemBuilder: (context, index) {
+                return Padding(
+                  padding: EdgeInsets.all(12),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Image.asset(
+                        widget.onboardingData[index]['image']!,
+                      ),
+                      SizedBox(
+                        height: 20,
+                      ),
+                      Text(
+                        widget.onboardingData[index]['title']!,
+                        textAlign: TextAlign.center,
+                        style: GoogleFonts.plusJakartaSans(
+                            fontSize: 22, fontWeight: FontWeight.w600),
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      Text(
+                        widget.onboardingData[index]['subtitle']!,
+                        textAlign: TextAlign.center,
+                        style: GoogleFonts.plusJakartaSans(fontSize: 16),
+                      )
+                    ],
+                  ),
+                );
+              },
+            ),
+          ),
+          Obx(() => Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: List.generate(
+                  widget.onboardingData.length,
+                  (index) => AnimatedContainer(
+                    duration: Duration(milliseconds: 300),
+                    margin: EdgeInsets.symmetric(horizontal: 4, vertical: 20),
+                    height: 8,
+                    width:
+                        widget.controller.currentPage.value == index ? 20 : 8,
+                    decoration: BoxDecoration(
+                      color: widget.controller.currentPage.value == index
+                          ? Colors.blue
+                          : Colors.grey,
+                      borderRadius: BorderRadius.circular(4),
                     ),
-                    SizedBox(
-                      height: 20,
-                    ),
-                    Text(
-                      widget.onboardingData[index]['title']!,
-                      textAlign: TextAlign.center,
-                      style: GoogleFonts.plusJakartaSans(
-                          fontSize: 22, fontWeight: FontWeight.w600),
-                    ),
-                    SizedBox(
-                      height: 10,
-                    ),
-                    Text(
-                      widget.onboardingData[index]['subtitle']!,
-                      textAlign: TextAlign.center,
-                      style: GoogleFonts.plusJakartaSans(fontSize: 16),
-                    )
-                  ],
+                  ),
                 ),
-              );
-            },
-          )),
+              )),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 80),
             child: ElevatedButton(
-              onPressed: () {},
+              onPressed: () {
+                widget.controller.nextPage();
+              },
               style: ElevatedButton.styleFrom(
                   backgroundColor: btn,
                   shape: RoundedRectangleBorder(
