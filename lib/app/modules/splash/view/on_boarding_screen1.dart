@@ -1,3 +1,4 @@
+import 'package:app_lms/theme/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -36,6 +37,22 @@ class _OnBoardingState extends State<OnBoarding> {
               fontSize: 16,
             ),
             textAlign: TextAlign.center,
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 80),
+            child: ElevatedButton(
+              onPressed: () {},
+              style: ElevatedButton.styleFrom(
+                  backgroundColor: btn,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  minimumSize: Size(double.infinity, 57)),
+              child: Text(
+                "Continue",
+                style: GoogleFonts.plusJakartaSans(color: white),
+              ),
+            ),
           )
         ],
       ),
