@@ -18,11 +18,35 @@ class Boarding2 extends StatelessWidget {
               'assets/images/on_boarding/Frame2.png',
               width: Get.width * 0.8,
             ),
+            SizedBox(
+              height: 20,
+            ),
             Text(
               'Join Cybex IT Group to Kick Start\nYour Lesson',
               textAlign: TextAlign.center,
               style: GoogleFonts.plusJakartaSans(
                   fontSize: 22, fontWeight: FontWeight.w600),
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            Text(
+              'Join and Learn from our Top Instructors!',
+              style: GoogleFonts.plusJakartaSans(fontSize: 16),
+            ),
+            SizedBox(
+              height: 24,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                ElevatedButton(onPressed: () {}, child: Text('Sign in')),
+                SizedBox(width: 10),
+                ElevatedButton(
+                  onPressed: () {},
+                  child: Text('Sign Up'),
+                )
+              ],
             )
           ],
         ),
