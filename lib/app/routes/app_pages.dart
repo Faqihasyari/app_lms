@@ -1,4 +1,5 @@
 import 'package:app_lms/app/modules/splash/view/on_boarding_screen1.dart';
+import 'package:app_lms/app/modules/splash/view/on_boarding_screen2.dart';
 import 'package:get/get.dart';
 import '../modules/home/views/home_view.dart';
 import '../modules/splash/view/splash_screen.dart';
@@ -18,6 +19,10 @@ class AppPages {
     GetPage(
       name: _Paths.ON_BOARDING_SCREEN1,
       page: () =>  OnBoarding(),
+    ),
+    GetPage(
+      name: _Paths.ON_BOARDING_SCREEN2,
+      page: () =>  Boarding2(),
     ),
   ];
 }

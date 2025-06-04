@@ -6,6 +6,8 @@ abstract class Routes {
   static const HOME = _Paths.HOME;
   static const SPLASH = _Paths.SPLASH;
   static const ON_BOARDING_SCREEN1 = _Paths.ON_BOARDING_SCREEN1;
+  static const ON_BOARDING_SCREEN2 = _Paths.ON_BOARDING_SCREEN2;
+
 
 
 }
@@ -15,6 +17,8 @@ abstract class _Paths {
   static const HOME = '/home';
   static const SPLASH = '/splash';
   static const ON_BOARDING_SCREEN1 = '/board1';
+  static const ON_BOARDING_SCREEN2 = '/board2';
+
 
 
 }

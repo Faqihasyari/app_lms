@@ -28,7 +28,7 @@ class OnBoarding extends StatefulWidget {
           'Experience interactive learning with\nexpert-led courses and progress\ntracking',
     },
     {
-      'image': 'assets/images/on_boarding/Frame.png',
+      'image': 'assets/images/on_boarding/Frame1.png',
       'title':
           'Join a community of learners and\nembark on a learning adventure',
       'subtitle':
@@ -109,7 +109,7 @@ class _OnBoardingState extends State<OnBoarding> {
             padding: const EdgeInsets.symmetric(horizontal: 80),
             child: ElevatedButton(
               onPressed: () {
-                widget.controller.nextPage();
+                widget.controller.nextPageOrFinish();
               },
               style: ElevatedButton.styleFrom(
                   backgroundColor: btn,
