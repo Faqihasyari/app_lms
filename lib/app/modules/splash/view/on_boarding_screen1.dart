@@ -49,7 +49,7 @@ class _OnBoardingState extends State<OnBoarding> {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           SizedBox(
-            height: MediaQuery.of(context).size.height * 0.74,
+            height: MediaQuery.of(context).size.height * 0.75,
             child: PageView.builder(
               controller: widget.controller.pageController,
               onPageChanged: widget.controller.onPageChanged,
@@ -62,6 +62,7 @@ class _OnBoardingState extends State<OnBoarding> {
                     children: [
                       Image.asset(
                         widget.onboardingData[index]['image']!,
+                        width: Get.width * 0.7,
                       ),
                       SizedBox(
                         height: 20,
