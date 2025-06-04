@@ -7,9 +7,7 @@ abstract class Routes {
   static const SPLASH = _Paths.SPLASH;
   static const ON_BOARDING_SCREEN1 = _Paths.ON_BOARDING_SCREEN1;
   static const ON_BOARDING_SCREEN2 = _Paths.ON_BOARDING_SCREEN2;
-
-
-
+  static const SIGNIN = _Paths.SIGNIN;
 }
 
 abstract class _Paths {
@@ -18,7 +16,5 @@ abstract class _Paths {
   static const SPLASH = '/splash';
   static const ON_BOARDING_SCREEN1 = '/board1';
   static const ON_BOARDING_SCREEN2 = '/board2';
-
-
-
+  static const SIGNIN = '/signin';
 }
