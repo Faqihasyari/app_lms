@@ -1,3 +1,4 @@
+import 'package:app_lms/app/routes/app_pages.dart';
 import 'package:app_lms/theme/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -45,7 +46,9 @@ class Boarding2 extends StatelessWidget {
                   width: 190,
                   height: 60,
                   child: ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Get.offAllNamed(Routes.SIGNIN);
+                    },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: btn,
                       shape: RoundedRectangleBorder(
