@@ -1,3 +1,4 @@
+import 'package:app_lms/theme/theme.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
@@ -11,8 +12,8 @@ class SigninView extends GetView<SigninController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('SigninView'),
         centerTitle: true,
+        leading: Icon(Icons.arrow_back),
       ),
       body: Center(
           child: Column(
@@ -23,7 +24,32 @@ class SigninView extends GetView<SigninController> {
             style: GoogleFonts.plusJakartaSans(
                 fontWeight: FontWeight.w600, fontSize: 32),
           ),
-          const Text('Please Sign in with your account')
+          SizedBox(
+            height: 10,
+          ),
+          Text(
+            'Please Sign in with your account',
+            style: GoogleFonts.plusJakartaSans(fontSize: 16),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(30),
+            child: TextField(
+              decoration: InputDecoration(
+                labelText: 'Email Here',
+                labelStyle: GoogleFonts.plusJakartaSans(),
+                floatingLabelStyle: TextStyle(color: black),
+                border: OutlineInputBorder(
+                  borderSide: BorderSide(color: ring),
+                  borderRadius: BorderRadius.circular(10), // Sudut membulat
+                ),
+                contentPadding:
+                    EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+                focusedBorder: OutlineInputBorder(
+                  borderSide: BorderSide(color: ring),
+                ),
+              ),
+            ),
+          )
         ],
       )),
     );
