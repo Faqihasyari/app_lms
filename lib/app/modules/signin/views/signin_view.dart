@@ -68,7 +68,8 @@ class SigninView extends GetView<SigninController> {
                 ),
               ),
             ),
-          )
+          ),
+          ElevatedButton(onPressed: () {}, child: Text('SIGN IN'))
         ],
       )),
     );

@@ -8,6 +8,7 @@ abstract class Routes {
   static const ON_BOARDING_SCREEN1 = _Paths.ON_BOARDING_SCREEN1;
   static const ON_BOARDING_SCREEN2 = _Paths.ON_BOARDING_SCREEN2;
   static const SIGNIN = _Paths.SIGNIN;
+  static const SIGNUP = _Paths.SIGNUP;
 }
 
 abstract class _Paths {
@@ -17,4 +18,5 @@ abstract class _Paths {
   static const ON_BOARDING_SCREEN1 = '/board1';
   static const ON_BOARDING_SCREEN2 = '/board2';
   static const SIGNIN = '/signin';
+  static const SIGNUP = '/signup';
 }
