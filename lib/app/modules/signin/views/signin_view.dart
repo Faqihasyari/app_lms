@@ -32,10 +32,29 @@ class SigninView extends GetView<SigninController> {
             style: GoogleFonts.plusJakartaSans(fontSize: 16),
           ),
           Padding(
-            padding: const EdgeInsets.all(30),
+            padding: const EdgeInsets.fromLTRB(30, 60, 30, 35),
             child: TextField(
               decoration: InputDecoration(
                 labelText: 'Email Here',
+                labelStyle: GoogleFonts.plusJakartaSans(),
+                floatingLabelStyle: TextStyle(color: black),
+                border: OutlineInputBorder(
+                  borderSide: BorderSide(color: ring),
+                  borderRadius: BorderRadius.circular(10), // Sudut membulat
+                ),
+                contentPadding:
+                    EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+                focusedBorder: OutlineInputBorder(
+                  borderSide: BorderSide(color: ring),
+                ),
+              ),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 30),
+            child: TextField(
+              decoration: InputDecoration(
+                labelText: 'Password',
                 labelStyle: GoogleFonts.plusJakartaSans(),
                 floatingLabelStyle: TextStyle(color: black),
                 border: OutlineInputBorder(
