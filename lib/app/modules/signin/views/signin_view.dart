@@ -69,7 +69,10 @@ class SigninView extends GetView<SigninController> {
               ),
             ),
           ),
-          ElevatedButton(onPressed: () {}, child: Text('SIGN IN'))
+          ElevatedButton(onPressed: () {}, child: Text('SIGN IN', style: GoogleFonts.plusJakartaSans(),)),
+          ElevatedButton(onPressed: () {
+            
+          }, child: Text('Sign In with Google', style: GoogleFonts.plusJakartaSans()))
         ],
       )),
     );
