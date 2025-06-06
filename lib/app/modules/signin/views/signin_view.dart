@@ -13,16 +13,22 @@ class SigninView extends GetView<SigninController> {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        leading: Icon(Icons.arrow_back),
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back),
+          onPressed: () {
+            Get.back();
+          },
+        ),
       ),
-      body: Center(
-          child: Column(
+      body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Text(
             'Sign in',
             style: GoogleFonts.plusJakartaSans(
-                fontWeight: FontWeight.w600, fontSize: 32),
+              fontWeight: FontWeight.w600,
+              fontSize: 32,
+            ),
           ),
           SizedBox(
             height: 10,
@@ -69,12 +75,52 @@ class SigninView extends GetView<SigninController> {
               ),
             ),
           ),
-          ElevatedButton(onPressed: () {}, child: Text('SIGN IN', style: GoogleFonts.plusJakartaSans(),)),
-          ElevatedButton(onPressed: () {
-            
-          }, child: Text('Sign In with Google', style: GoogleFonts.plusJakartaSans()))
+          SizedBox(
+            height: 55,
+          ),
+          SizedBox(
+            height: 53,
+            width: 300,
+            child: ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                    backgroundColor: btn,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10),
+                    )),
+                onPressed: () {},
+                child: Text(
+                  'SIGN IN',
+                  style: GoogleFonts.plusJakartaSans(
+                      fontWeight: FontWeight.w600, fontSize: 20, color: white),
+                )),
+          ),
+          SizedBox(
+            height: 80,
+          ),
+          SizedBox(
+            height: 53,
+            width: 300,
+            child: ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                    backgroundColor: white,
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10),
+                        side: BorderSide(color: ring, width: 1))),
+                onPressed: () {},
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Image.asset('assets/images/logo/google_icon.png'),
+                    Text(
+                      'Sign In with Google',
+                      style: GoogleFonts.plusJakartaSans(
+                          fontSize: 20, color: black),
+                    ),
+                  ],
+                )),
+          )
         ],
-      )),
+      ),
     );
   }
 }
