@@ -69,7 +69,9 @@ class Boarding2 extends StatelessWidget {
                   height: 60,
                   width: 190,
                   child: ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Get.toNamed(Routes.SIGNUP);
+                    },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: white,
                       shape: RoundedRectangleBorder(
