@@ -97,8 +97,33 @@ class SigninView extends GetView<SigninController> {
                         color: white),
                   )),
             ),
-            SizedBox(
-              height: 80,
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 27, horizontal: 37),
+              child: Row(
+                children: [
+                  Expanded(
+                    child: Divider(
+                      thickness: 1,
+                      color: Colors.grey,
+                      endIndent: 10, // jarak ke teks
+                    ),
+                  ),
+                  Text(
+                    'Or Sign in with',
+                    style: TextStyle(
+                      color: Colors.black54,
+                      fontWeight: FontWeight.w500,
+                    ),
+                  ),
+                  Expanded(
+                    child: Divider(
+                      thickness: 1,
+                      color: Colors.grey,
+                      indent: 10, // jarak dari teks
+                    ),
+                  ),
+                ],
+              ),
             ),
             SizedBox(
               height: 53,
