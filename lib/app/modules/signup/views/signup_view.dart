@@ -23,43 +23,138 @@ class SignupView extends GetView<SignupController> {
           ),
           centerTitle: true,
         ),
-        body: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Center(
-              child: Text(
-                'Create an account to begin your Learning Journey',
-                style: GoogleFonts.plusJakartaSans(fontSize: 15),
+        body: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Center(
+                child: Text(
+                  'Create an account to begin your Learning Journey',
+                  style: GoogleFonts.plusJakartaSans(fontSize: 15),
+                ),
               ),
-            ),
-            Padding(
-              padding: const EdgeInsets.fromLTRB(30, 60, 30, 35),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text('Full Name'),
-                  TextField(
-                    decoration: InputDecoration(
-                      hintText: 'Your Name Here',
-                      hintStyle: TextStyle(color: hint),
-                      labelStyle: GoogleFonts.plusJakartaSans(),
-                      floatingLabelStyle: TextStyle(color: black),
-                      border: OutlineInputBorder(
-                        borderSide: BorderSide(color: ring),
-                        borderRadius:
-                            BorderRadius.circular(10), // Sudut membulat
-                      ),
-                      contentPadding:
-                          EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-                      focusedBorder: OutlineInputBorder(
-                        borderSide: BorderSide(color: ring),
+              Padding(
+                padding: const EdgeInsets.fromLTRB(30, 60, 30, 35),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text('Full Name'),
+                    TextField(
+                      decoration: InputDecoration(
+                        hintText: 'Your Name Here',
+                        hintStyle: TextStyle(color: hint),
+                        labelStyle: GoogleFonts.plusJakartaSans(),
+                        floatingLabelStyle: TextStyle(color: black),
+                        border: OutlineInputBorder(
+                          borderSide: BorderSide(color: ring),
+                          borderRadius:
+                              BorderRadius.circular(10), // Sudut membulat
+                        ),
+                        contentPadding:
+                            EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+                        focusedBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10),
+                          borderSide: BorderSide(color: ring),
+                        ),
                       ),
                     ),
-                  ),
-                ],
+                    SizedBox(
+                      height: 20,
+                    ),
+                    Text('Email'),
+                    TextField(
+                      decoration: InputDecoration(
+                        hintText: 'Your Email Here',
+                        hintStyle: TextStyle(color: hint),
+                        labelStyle: GoogleFonts.plusJakartaSans(),
+                        floatingLabelStyle: TextStyle(color: black),
+                        border: OutlineInputBorder(
+                          borderSide: BorderSide(color: ring),
+                          borderRadius:
+                              BorderRadius.circular(10), // Sudut membulat
+                        ),
+                        contentPadding:
+                            EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+                        focusedBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10),
+                          borderSide: BorderSide(color: ring),
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    Text('Password'),
+                    TextField(
+                      decoration: InputDecoration(
+                        hintText: 'Password',
+                        hintStyle: TextStyle(color: hint),
+                        labelStyle: GoogleFonts.plusJakartaSans(),
+                        floatingLabelStyle: TextStyle(color: black),
+                        border: OutlineInputBorder(
+                          borderSide: BorderSide(color: ring),
+                          borderRadius:
+                              BorderRadius.circular(10), // Sudut membulat
+                        ),
+                        contentPadding:
+                            EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+                        focusedBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10),
+                          borderSide: BorderSide(color: ring),
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    Text('Confirm Password'),
+                    TextField(
+                      decoration: InputDecoration(
+                        hintText: 'Confirm Password',
+                        hintStyle: TextStyle(color: hint),
+                        labelStyle: GoogleFonts.plusJakartaSans(),
+                        floatingLabelStyle: TextStyle(color: black),
+                        border: OutlineInputBorder(
+                          borderSide: BorderSide(color: ring),
+                          borderRadius:
+                              BorderRadius.circular(10), // Sudut membulat
+                        ),
+                        contentPadding:
+                            EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+                        focusedBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10),
+                          borderSide: BorderSide(color: ring),
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    Center(
+                      child: SizedBox(
+                        height: 53,
+                        width: 350,
+                        child: ElevatedButton(
+                            style: ElevatedButton.styleFrom(
+                                backgroundColor: btn,
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(10),
+                                )),
+                            onPressed: () {},
+                            child: Text(
+                              'SIGN UP',
+                              style: GoogleFonts.plusJakartaSans(
+                                  fontWeight: FontWeight.w600,
+                                  fontSize: 20,
+                                  color: white),
+                            )),
+                      ),
+                    ),
+                  ],
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ));
   }
 }
