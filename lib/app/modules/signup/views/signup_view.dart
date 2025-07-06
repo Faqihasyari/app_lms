@@ -59,7 +59,7 @@ class SignupView extends GetView<SignupController> {
                       ),
                     ),
                     SizedBox(
-                      height: 20,
+                      height: 5,
                     ),
                     Text('Email'),
                     TextField(
@@ -82,7 +82,7 @@ class SignupView extends GetView<SignupController> {
                       ),
                     ),
                     SizedBox(
-                      height: 20,
+                      height: 5,
                     ),
                     Text('Password'),
                     TextField(
@@ -105,7 +105,7 @@ class SignupView extends GetView<SignupController> {
                       ),
                     ),
                     SizedBox(
-                      height: 20,
+                      height: 5,
                     ),
                     Text('Confirm Password'),
                     TextField(
@@ -128,7 +128,7 @@ class SignupView extends GetView<SignupController> {
                       ),
                     ),
                     SizedBox(
-                      height: 10,
+                      height: 15,
                     ),
                     Center(
                       child: SizedBox(
