@@ -12,34 +12,65 @@ class SignupView extends GetView<SignupController> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Column(
-            children: [
-              Text(
-                'Sign Up',
-                style: GoogleFonts.plusJakartaSans(
-                    fontWeight: FontWeight.w600, fontSize: 32),
-              ),
-            ],
-          ),
           centerTitle: true,
         ),
         body: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Center(
-                child: Text(
-                  'Create an account to begin your Learning Journey',
-                  style: GoogleFonts.plusJakartaSans(fontSize: 15),
-                ),
+              Text(
+                'Sign Up',
+                style: GoogleFonts.plusJakartaSans(
+                    fontWeight: FontWeight.w600, fontSize: 32),
               ),
+              Text(
+                'Create an account to begin your Learning Journey',
+                style: GoogleFonts.plusJakartaSans(fontSize: 15),
+              ),
+              Obx(() => Padding(
+                    padding: const EdgeInsets.fromLTRB(30, 10, 30, 0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: controller.roles.map((role) {
+                        final isSelected =
+                            controller.selectedRole.value == role;
+                        return GestureDetector(
+                          onTap: () {
+                            controller.selectedRole.value = role;
+                          },
+                          child: Column(
+                            children: [
+                              Text(
+                                role,
+                                style: TextStyle(
+                                  fontWeight: FontWeight.w600,
+                                  fontSize: 14,
+                                  color:
+                                      isSelected ? Colors.blue : Colors.black,
+                                ),
+                              ),
+                              SizedBox(height: 4),
+                              Container(
+                                height: 2,
+                                width: 40,
+                                color: isSelected
+                                    ? Colors.blue
+                                    : Colors.transparent,
+                              )
+                            ],
+                          ),
+                        );
+                      }).toList(),
+                    ),
+                  )),
               Padding(
-                padding: const EdgeInsets.fromLTRB(30, 60, 30, 35),
+                padding: const EdgeInsets.fromLTRB(30, 5, 30, 35),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text('Full Name'),
                     TextField(
+                      controller: controller.nameC,
                       decoration: InputDecoration(
                         hintText: 'Your Name Here',
                         hintStyle: TextStyle(color: hint),
@@ -63,6 +94,7 @@ class SignupView extends GetView<SignupController> {
                     ),
                     Text('Email'),
                     TextField(
+                      controller: controller.emailC,
                       decoration: InputDecoration(
                         hintText: 'Your Email Here',
                         hintStyle: TextStyle(color: hint),
@@ -162,9 +194,13 @@ class SignupView extends GetView<SignupController> {
                                 shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(10),
                                 )),
-                            onPressed: () {},
+                            onPressed: () {
+                              controller.signupSiswa();
+                            },
                             child: Text(
-                              'SIGN UP',
+                              controller.isLoading.isFalse
+                                  ? 'SIGNUP'
+                                  : 'LOADING...',
                               style: GoogleFonts.plusJakartaSans(
                                   fontWeight: FontWeight.w600,
                                   fontSize: 20,
