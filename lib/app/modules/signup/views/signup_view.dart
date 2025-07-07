@@ -247,7 +247,9 @@ class SignupView extends GetView<SignupController> {
                                 shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(10),
                                     side: BorderSide(color: ring, width: 1))),
-                            onPressed: () {},
+                            onPressed: () {
+                              controller.signInWithGoogle();
+                            },
                             child: Row(
                               mainAxisSize: MainAxisSize.min,
                               children: [
