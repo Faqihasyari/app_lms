@@ -85,22 +85,33 @@ class SignupView extends GetView<SignupController> {
                       height: 5,
                     ),
                     Text('Password'),
-                    TextField(
-                      decoration: InputDecoration(
-                        hintText: 'Password',
-                        hintStyle: TextStyle(color: hint),
-                        labelStyle: GoogleFonts.plusJakartaSans(),
-                        floatingLabelStyle: TextStyle(color: black),
-                        border: OutlineInputBorder(
-                          borderSide: BorderSide(color: ring),
-                          borderRadius:
-                              BorderRadius.circular(10), // Sudut membulat
-                        ),
-                        contentPadding:
-                            EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-                        focusedBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(10),
-                          borderSide: BorderSide(color: ring),
+                    Obx(
+                      () => TextField(
+                        controller: controller.passC,
+                        obscureText: controller.isHidden.value,
+                        decoration: InputDecoration(
+                          suffixIcon: IconButton(
+                              onPressed: () {
+                                controller.isHidden.toggle();
+                              },
+                              icon: controller.isHidden.isTrue
+                                  ? Icon(Icons.remove_red_eye)
+                                  : Icon(Icons.remove_red_eye_outlined)),
+                          hintText: 'Password',
+                          hintStyle: TextStyle(color: hint),
+                          labelStyle: GoogleFonts.plusJakartaSans(),
+                          floatingLabelStyle: TextStyle(color: black),
+                          border: OutlineInputBorder(
+                            borderSide: BorderSide(color: ring),
+                            borderRadius:
+                                BorderRadius.circular(10), // Sudut membulat
+                          ),
+                          contentPadding: EdgeInsets.symmetric(
+                              horizontal: 16, vertical: 12),
+                          focusedBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(10),
+                            borderSide: BorderSide(color: ring),
+                          ),
                         ),
                       ),
                     ),
