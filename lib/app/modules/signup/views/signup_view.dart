@@ -208,62 +208,6 @@ class SignupView extends GetView<SignupController> {
                             )),
                       ),
                     ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(
-                          vertical: 7, horizontal: 37),
-                      child: Row(
-                        children: [
-                          Expanded(
-                            child: Divider(
-                              thickness: 1,
-                              color: Colors.grey,
-                              endIndent: 10, // jarak ke teks
-                            ),
-                          ),
-                          Text(
-                            'Or Sign in with',
-                            style: TextStyle(
-                              color: Colors.black54,
-                              fontWeight: FontWeight.w500,
-                            ),
-                          ),
-                          Expanded(
-                            child: Divider(
-                              thickness: 1,
-                              color: Colors.grey,
-                              indent: 10, // jarak dari teks
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    Center(
-                      child: SizedBox(
-                        height: 53,
-                        width: 350,
-                        child: ElevatedButton(
-                            style: ElevatedButton.styleFrom(
-                                backgroundColor: white,
-                                shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(10),
-                                    side: BorderSide(color: ring, width: 1))),
-                            onPressed: () {
-                              controller.signInWithGoogle();
-                            },
-                            child: Row(
-                              mainAxisSize: MainAxisSize.min,
-                              children: [
-                                Image.asset(
-                                    'assets/images/logo/google_icon.png'),
-                                Text(
-                                  'Sign In with Google',
-                                  style: GoogleFonts.plusJakartaSans(
-                                      fontSize: 20, color: black),
-                                ),
-                              ],
-                            )),
-                      ),
-                    )
                   ],
                 ),
               ),

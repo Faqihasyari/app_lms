@@ -33,32 +33,19 @@ class SignupController extends GetxController {
       if (event == AuthChangeEvent.signedIn && session != null) {
         final user = session.user;
 
-        if (user != null) {
-          // Gunakan user.id, bukan user.email, untuk mengecek profil
-          final existingProfile = await client
-              .from('profile')
-              .select()
-              .eq('id', user.id) // PENTING: Gunakan user.id
-              .maybeSingle();
+        // Cek apakah user sudah ada di tabel profile
+        final existing = await client
+            .from('profile')
+            .select()
+            .eq('email', user.email!)
+            .maybeSingle();
 
-          if (existingProfile == null) {
-            // Pastikan full_name dari userMetadata tersedia
-            String fullName = user.userMetadata?['full_name'] ??
-                user.userMetadata?['name'] ??
-                'Pengguna Baru';
-
-            await client.from('profile').insert({
-              'id': user.id, // PENTING: Sertakan user.id
-              'email': user.email,
-              'full_name': fullName,
-              'role':
-                  'Siswa', // Set role default untuk Google Sign-up jika tidak ada pilihan role saat Google Sign-in
-            });
-            Get.snackbar(
-                'Sukses', 'Profil berhasil dibuat untuk pengguna Google.');
-          }
-          // Di sini Anda bisa mengarahkan ke halaman utama setelah login/signup
-          // Get.offAll(() => HomePage()); // Ganti HomePage dengan halaman tujuan Anda
+        if (existing == null) {
+          await client.from('profile').insert({
+            'email': user.email,
+            'full_name': user.userMetadata?['full_name'] ?? '',
+            'role': selectedRole.value,
+          });
         }
       }
     });
