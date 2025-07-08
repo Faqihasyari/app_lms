@@ -125,28 +125,6 @@ class SigninView extends GetView<SigninController> {
                 ],
               ),
             ),
-            SizedBox(
-              height: 53,
-              width: 300,
-              child: ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                      backgroundColor: white,
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10),
-                          side: BorderSide(color: ring, width: 1))),
-                  onPressed: () {},
-                  child: Row(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      Image.asset('assets/images/logo/google_icon.png'),
-                      Text(
-                        'Sign In with Google',
-                        style: GoogleFonts.plusJakartaSans(
-                            fontSize: 20, color: black),
-                      ),
-                    ],
-                  )),
-            )
           ],
         ),
       ),
