@@ -14,7 +14,7 @@ class HomeView extends GetView<HomeController> {
     print("User di HomeView: $user");
     return Scaffold(
       appBar: AppBar(
-        title: const Text('HomeView'),
+        title: const Text('HOMEVIEW'),
         centerTitle: true,
       ),
       body: Center(
