@@ -65,20 +65,32 @@ class SigninView extends GetView<SigninController> {
                     height: 10,
                   ),
                   Text('Password'),
-                  TextField(
-                    decoration: InputDecoration(
-                      labelText: 'Password',
-                      labelStyle: GoogleFonts.plusJakartaSans(),
-                      floatingLabelStyle: TextStyle(color: black),
-                      border: OutlineInputBorder(
-                        borderSide: BorderSide(color: ring),
-                        borderRadius:
-                            BorderRadius.circular(10), // Sudut membulat
-                      ),
-                      contentPadding:
-                          EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-                      focusedBorder: OutlineInputBorder(
-                        borderSide: BorderSide(color: ring),
+                  Obx(
+                    () => TextField(
+                      controller: controller.passC,
+                      obscureText: controller.isHidden.value,
+                      decoration: InputDecoration(
+                        hintText: 'Password',
+                        suffixIcon: IconButton(
+                            onPressed: () {
+                              controller.isHidden.toggle();
+                            },
+                            icon: controller.isHidden.isTrue
+                                ? Icon(Icons.remove_red_eye)
+                                : Icon(Icons.remove_red_eye_outlined)),
+                        labelStyle: GoogleFonts.plusJakartaSans(),
+                        floatingLabelStyle: TextStyle(color: black),
+                        border: OutlineInputBorder(
+                          borderSide: BorderSide(color: ring),
+                          borderRadius:
+                              BorderRadius.circular(10), // Sudut membulat
+                        ),
+                        contentPadding:
+                            EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+                        focusedBorder: OutlineInputBorder(
+                          borderSide: BorderSide(color: ring),
+                          borderRadius: BorderRadius.circular(10),
+                        ),
                       ),
                     ),
                   ),
