@@ -45,6 +45,7 @@ class SigninView extends GetView<SigninController> {
                 children: [
                   Text('Email'),
                   TextField(
+                    controller: controller.emailC,
                     decoration: InputDecoration(
                       labelText: 'Email Here',
                       labelStyle: GoogleFonts.plusJakartaSans(),
@@ -106,7 +107,9 @@ class SigninView extends GetView<SigninController> {
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(10),
                       )),
-                  onPressed: () {},
+                  onPressed: () {
+                    controller.signinUser(context);
+                  },
                   child: Text(
                     'SIGN IN',
                     style: GoogleFonts.plusJakartaSans(
