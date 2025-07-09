@@ -22,35 +22,6 @@ class SignupController extends GetxController {
     'Admin',
   ];
 
-  @override
-  void onInit() {
-    super.onInit();
-
-    Supabase.instance.client.auth.onAuthStateChange.listen((data) async {
-      final session = data.session;
-      final event = data.event;
-
-      if (event == AuthChangeEvent.signedIn && session != null) {
-        final user = session.user;
-
-        // Cek apakah user sudah ada di tabel profile
-        final existing = await client
-            .from('profile')
-            .select()
-            .eq('email', user.email!)
-            .maybeSingle();
-
-        if (existing == null) {
-          await client.from('profile').insert({
-            'email': user.email,
-            'full_name': user.userMetadata?['full_name'] ?? '',
-            'role': selectedRole.value,
-          });
-        }
-      }
-    });
-  }
-
   void signupSiswa() async {
     final name = nameC.text.trim();
     final email = emailC.text.trim();
@@ -106,14 +77,5 @@ class SignupController extends GetxController {
     }
   }
 
-  Future<void> signInWithGoogle() async {
-    try {
-      await Supabase.instance.client.auth.signInWithOAuth(
-        OAuthProvider.google,
-        redirectTo: 'io.supabase.flutter://login-callback/',
-      );
-    } catch (e) {
-      Get.snackbar('Gagal', e.toString());
-    }
-  }
+  
 }
