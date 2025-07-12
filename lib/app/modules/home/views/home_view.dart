@@ -14,12 +14,40 @@ class HomeView extends GetView<HomeController> {
     print("User di HomeView: $user");
     return Scaffold(
       appBar: AppBar(
-        title: const Text('HOMEVIEW'),
-        centerTitle: true,
+        backgroundColor: Colors.white,
+        elevation: 0,
+        title: Obx(() => RichText(
+              text: TextSpan(
+                text: 'Welcome, ',
+                style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                ),
+                children: [
+                  TextSpan(
+                    text: controller.fullName.value.isEmpty
+                        ? '...'
+                        : controller.fullName.value,
+                    style: TextStyle(
+                      color: Colors.blue.shade800,
+                    ),
+                  ),
+                ],
+              ),
+            )),
+        actions: [
+          IconButton(
+            onPressed: () {},
+            icon: Icon(Icons.settings, color: Colors.grey.shade400),
+          ),
+          IconButton(
+            onPressed: () {},
+            icon: Icon(Icons.notifications, color: Colors.grey.shade400),
+          ),
+        ],
       ),
-      body: Center(
-        child: Text(user?.email ?? 'Email tidak ditemukan'),
-      ),
+      body: Center(child: Text("Isi halaman")),
     );
   }
 }

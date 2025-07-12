@@ -1,23 +1,27 @@
 import 'package:get/get.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
 class HomeController extends GetxController {
-  //TODO: Implement HomeController
+  RxString fullName = ''.obs;
 
-  final count = 0.obs;
   @override
   void onInit() {
     super.onInit();
+    fetchUserName();
   }
 
-  @override
-  void onReady() {
-    super.onReady();
-  }
+  Future<void> fetchUserName() async {
+    final userId = Supabase.instance.client.auth.currentUser?.id;
+    if (userId != null) {
+      final response = await Supabase.instance.client
+          .from('profile')
+          .select()
+          .eq('id', userId)
+          .maybeSingle(); // pakai maybeSingle untuk menghindari error
 
-  @override
-  void onClose() {
-    super.onClose();
+      if (response != null && response['full_name'] != null) {
+        fullName.value = response['full_name'];
+      }
+    }
   }
-
-  void increment() => count.value++;
 }
