@@ -11,17 +11,22 @@ class HomeController extends GetxController {
   }
 
   Future<void> fetchUserName() async {
-    final userId = Supabase.instance.client.auth.currentUser?.id;
-    if (userId != null) {
+    final email = Supabase.instance.client.auth.currentUser?.email;
+
+    if (email != null) {
       final response = await Supabase.instance.client
           .from('profile')
           .select()
-          .eq('id', userId)
-          .maybeSingle(); // pakai maybeSingle untuk menghindari error
+          .eq('email', email)
+          .maybeSingle(); // hindari error kalau datanya kosong
 
       if (response != null && response['full_name'] != null) {
         fullName.value = response['full_name'];
+      } else {
+        print('Profile tidak ditemukan atau full_name kosong');
       }
+    } else {
+      print('Email user tidak ditemukan (null)');
     }
   }
 }

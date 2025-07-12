@@ -10,6 +10,7 @@ class SignupView extends GetView<SignupController> {
   const SignupView({super.key});
   @override
   Widget build(BuildContext context) {
+    final SignupController controller = Get.put(SignupController());
     return Scaffold(
         appBar: AppBar(
           centerTitle: true,

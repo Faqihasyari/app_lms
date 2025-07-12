@@ -10,6 +10,7 @@ class HomeView extends GetView<HomeController> {
 
   @override
   Widget build(BuildContext context) {
+    final HomeController controller = Get.put(HomeController());
     final user = Supabase.instance.client.auth.currentUser;
     print("User di HomeView: $user");
     return Scaffold(
