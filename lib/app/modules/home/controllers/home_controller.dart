@@ -3,6 +3,17 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 
 class HomeController extends GetxController {
   RxString fullName = ''.obs;
+  var selectedTags = <String>[].obs;
+
+  final List<String> tags = ['UI/UX', 'Graphics Design', 'Figma'];
+
+  void toggleTag(String tag){
+    if (selectedTags.contains(tag)){
+      selectedTags.remove(tag);
+    } else {
+      selectedTags.add(tag);
+    }
+  }
 
   @override
   void onInit() {

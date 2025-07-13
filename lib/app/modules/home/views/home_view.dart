@@ -15,6 +15,7 @@ class HomeView extends GetView<HomeController> {
     final user = Supabase.instance.client.auth.currentUser;
     print("User di HomeView: $user");
     return Scaffold(
+      backgroundColor: white,
       appBar: AppBar(
         backgroundColor: Colors.white,
         elevation: 0,
@@ -51,18 +52,33 @@ class HomeView extends GetView<HomeController> {
       ),
       body: Column(
         children: [
-          TextField(
-            decoration: InputDecoration(
-              hintText: 'Search Here',
-              hintStyle: TextStyle(color: Colors.grey), 
-              prefixIcon: Icon(Icons.search, color: Colors.grey,),
-              fillColor: white, 
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(30),
-                borderSide: BorderSide(color: Colors)
-              )
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20),
+            child: TextField(
+              decoration: InputDecoration(
+                  contentPadding: EdgeInsets.symmetric(vertical: 15),
+                  hintText: 'Search Here',
+                  hintStyle: TextStyle(color: Colors.grey),
+                  prefixIcon: Icon(
+                    Icons.search,
+                    color: Colors.grey,
+                  ),
+                  fillColor: white,
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(20),
+                    borderSide: BorderSide(color: ring, width: 1),
+                  ),
+                  enabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(20),
+                    borderSide: BorderSide(color: ring, width: 1),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(20),
+                      borderSide: BorderSide(color: ring, width: 1))),
             ),
-          )
+            
+          ),
+          
         ],
       ),
     );
