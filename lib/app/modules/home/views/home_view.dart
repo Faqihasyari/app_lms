@@ -1,3 +1,4 @@
+import 'package:app_lms/theme/theme.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
@@ -48,7 +49,22 @@ class HomeView extends GetView<HomeController> {
           ),
         ],
       ),
-      body: Center(child: Text("Isi halaman")),
+      body: Column(
+        children: [
+          TextField(
+            decoration: InputDecoration(
+              hintText: 'Search Here',
+              hintStyle: TextStyle(color: Colors.grey), 
+              prefixIcon: Icon(Icons.search, color: Colors.grey,),
+              fillColor: white, 
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(30),
+                borderSide: BorderSide(color: Colors)
+              )
+            ),
+          )
+        ],
+      ),
     );
   }
 }
