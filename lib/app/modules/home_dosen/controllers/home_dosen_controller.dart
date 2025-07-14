@@ -4,7 +4,7 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 class HomeDosenController extends GetxController {
   RxString fullName = ''.obs;
   RxBool isLoading = false.obs;
-  
+  // YA GITULAH
 
   @override
   void onInit() {
