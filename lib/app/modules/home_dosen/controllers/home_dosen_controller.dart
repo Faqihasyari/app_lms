@@ -3,6 +3,7 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 
 class HomeDosenController extends GetxController {
   RxString fullName = ''.obs;
+  RxBool isLoading = false.obs;
   
 
   @override
@@ -30,4 +31,30 @@ class HomeDosenController extends GetxController {
       print('Email user tidak ditemukan (null)');
     }
   }
+
+  Future<void> addCourse(String title, String desc) async {
+  isLoading.value = true;
+  final user = Supabase.instance.client.auth.currentUser;
+
+  if (user == null) {
+    Get.snackbar('Error', 'User belum login.');
+    return;
+  }
+
+  try {
+    await Supabase.instance.client.from('courses').insert({
+      'title': title,
+      'description': desc,
+      'created_by': user.id, // masih uuid!
+      'is_published': false,
+    });
+
+    Get.snackbar('Berhasil', 'Kursus berhasil ditambahkan.');
+  } catch (e) {
+    Get.snackbar('Error', 'Gagal menambah kursus: $e');
+  } finally {
+    isLoading.value = false;
+  }
+}
+
 }
