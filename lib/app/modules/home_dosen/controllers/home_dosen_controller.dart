@@ -1,23 +1,33 @@
 import 'package:get/get.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
 class HomeDosenController extends GetxController {
-  //TODO: Implement HomeDosenController
+  RxString fullName = ''.obs;
+  
 
-  final count = 0.obs;
   @override
   void onInit() {
     super.onInit();
+    fetchUserName();
   }
 
-  @override
-  void onReady() {
-    super.onReady();
-  }
+  Future<void> fetchUserName() async {
+    final email = Supabase.instance.client.auth.currentUser?.email;
 
-  @override
-  void onClose() {
-    super.onClose();
-  }
+    if (email != null) {
+      final response = await Supabase.instance.client
+          .from('profile')
+          .select()
+          .eq('email', email)
+          .maybeSingle(); // hindari error kalau datanya kosong
 
-  void increment() => count.value++;
+      if (response != null && response['full_name'] != null) {
+        fullName.value = response['full_name'];
+      } else {
+        print('Profile tidak ditemukan atau full_name kosong');
+      }
+    } else {
+      print('Email user tidak ditemukan (null)');
+    }
+  }
 }
