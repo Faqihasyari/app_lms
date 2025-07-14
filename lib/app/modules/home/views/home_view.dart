@@ -53,7 +53,7 @@ class HomeView extends GetView<HomeController> {
       body: Column(
         children: [
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20),
+            padding: const EdgeInsets.symmetric(horizontal: 40),
             child: TextField(
               decoration: InputDecoration(
                   contentPadding: EdgeInsets.symmetric(vertical: 15),
@@ -77,25 +77,28 @@ class HomeView extends GetView<HomeController> {
                       borderSide: BorderSide(color: ring, width: 1))),
             ),
           ),
+          SizedBox(
+            height: 3,
+          ),
           Obx(
             () => Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 Wrap(
-                  spacing: 10,
+                  spacing: 15,
                   children: controller.tags.map((tag) {
                     return ChoiceChip(
                       label: Text(tag),
                       selected: controller.selectedTags.contains(tag),
                       selectedColor: Colors.blue.shade100,
-                      backgroundColor: Colors.grey.shade100,
+                      backgroundColor: Colors.white,
                       labelStyle: TextStyle(
                           color: controller.selectedTags.contains(tag)
                               ? Colors.blue
                               : Colors.black),
                       onSelected: (_) => controller.toggleTag(tag),
                       shape: StadiumBorder(
-                        side: BorderSide(color: ring, width: 1),
+                        side: BorderSide(color: ring, width: 0.5),
                       ),
                     );
                   }).toList(),
