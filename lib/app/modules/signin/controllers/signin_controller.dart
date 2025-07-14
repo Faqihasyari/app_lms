@@ -3,6 +3,7 @@ import 'package:app_lms/app/routes/app_pages.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
+import '../../signup/controllers/signup_controller.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 class SigninController extends GetxController {
@@ -31,13 +32,24 @@ class SigninController extends GetxController {
           print('emailConfirmedAt: ${user.emailConfirmedAt}');
 
           if (verified != null) {
-            // Email sudah diverifikasi
+            // Ambil role dari tabel profile
+            final profile = await client
+                .from('profile')
+                .select('role')
+                .eq('email', user.email!)
+                .maybeSingle();
+
+            final role = profile?['role'];
+
             Get.snackbar("Berhasil", "Login Telah Berhasil");
-            Navigator.pushReplacement(
-  // ignore: use_build_context_synchronously
-  context,
-  MaterialPageRoute(builder: (context) => HomeView()),
-);
+
+            if (role == 'Dosen') {
+              Get.offAllNamed(Routes.HOME_DOSEN);
+            } else if (role == 'Siswa') {
+              Get.offAllNamed(Routes.HOME);
+            } else {
+              Get.snackbar("Error", "Role tidak dikenali");
+            }
           } else {
             await client.auth.signOut();
             Get.snackbar("Email Belum Diverifikasi",

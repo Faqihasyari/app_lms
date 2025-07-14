@@ -2,6 +2,8 @@ import 'package:get/get.dart';
 
 import '../modules/home/bindings/home_binding.dart';
 import '../modules/home/views/home_view.dart';
+import '../modules/home_dosen/bindings/home_dosen_binding.dart';
+import '../modules/home_dosen/views/home_dosen_view.dart';
 import '../modules/signin/bindings/signin_binding.dart';
 import '../modules/signin/views/signin_view.dart';
 import '../modules/signup/bindings/signup_binding.dart';
@@ -44,6 +46,11 @@ class AppPages {
       name: _Paths.HOME,
       page: () => const HomeView(),
       binding: HomeBinding(),
+    ),
+    GetPage(
+      name: _Paths.HOME_DOSEN,
+      page: () => const HomeDosenView(),
+      binding: HomeDosenBinding(),
     ),
   ];
 }
