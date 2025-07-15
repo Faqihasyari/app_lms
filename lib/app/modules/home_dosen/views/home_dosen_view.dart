@@ -1,3 +1,4 @@
+import 'package:app_lms/app/routes/app_pages.dart';
 import 'package:app_lms/theme/theme.dart';
 import 'package:flutter/material.dart';
 
@@ -51,7 +52,10 @@ class HomeDosenView extends GetView<HomeDosenController> {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () {
+          Get.toNamed(Routes.ADD_COURSE);
+        },
+        child: Icon(Icons.add),
       ),
       backgroundColor: white,
     );
