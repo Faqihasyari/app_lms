@@ -36,6 +36,8 @@ dependencies:
   google_fonts: ^6.2.1
   google_sign_in: ^7.1.0
   image_picker: ^1.1.2
+  path: ^1.9.1
+  path_provider: ^2.1.5
   supabase: ^2.7.0
   supabase_flutter: ^2.9.0
 
