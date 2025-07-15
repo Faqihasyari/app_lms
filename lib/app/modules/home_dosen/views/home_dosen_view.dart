@@ -1,3 +1,4 @@
+import 'package:app_lms/theme/theme.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
@@ -49,9 +50,10 @@ class HomeDosenView extends GetView<HomeDosenController> {
           style: TextStyle(fontSize: 20),
         ),
       ),
-      floatingActionButton: FloatingActionButton(onPressed: () {
-        
-      },),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {},
+      ),
+      backgroundColor: white,
     );
   }
 }
