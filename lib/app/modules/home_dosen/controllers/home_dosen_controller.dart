@@ -11,11 +11,14 @@ class HomeDosenController extends GetxController {
   Future<void> fetchCourses() async {
     try {
       isLoading.value = true;
+
       final response = await client
-          .from('course')
+          .from('course') // Pastikan nama tabel sama
           .select()
-          .eq('is_published', true) // Optional: hanya yang sudah publish
+          .eq('is_published', true)
           .order('created_at', ascending: false);
+
+      print("Fetched courses: $response");
 
       courses.assignAll(List<Map<String, dynamic>>.from(response));
     } catch (e) {
@@ -23,12 +26,6 @@ class HomeDosenController extends GetxController {
     } finally {
       isLoading.value = false;
     }
-  }
-
-  @override
-  void onInit() {
-    super.onInit();
-    fetchUserName();
   }
 
   Future<void> fetchUserName() async {
@@ -74,5 +71,13 @@ class HomeDosenController extends GetxController {
     } finally {
       isLoading.value = false;
     }
+  }
+
+  @override
+  void onInit() {
+    super.onInit();
+    print("HomeDosenController onInit dipanggil");
+    fetchUserName();
+    fetchCourses();
   }
 }
