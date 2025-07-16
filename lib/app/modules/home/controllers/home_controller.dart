@@ -4,11 +4,13 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 class HomeController extends GetxController {
   RxString fullName = ''.obs;
   var selectedTags = <String>[].obs;
-
+  RxBool isLoading = false.obs;
+  RxList<Map<String, dynamic>> courses = <Map<String, dynamic>>[].obs;
+  final SupabaseClient client = Supabase.instance.client;
   final List<String> tags = ['UI/UX', 'Graphics Design', 'Figma'];
 
-  void toggleTag(String tag){
-    if (selectedTags.contains(tag)){
+  void toggleTag(String tag) {
+    if (selectedTags.contains(tag)) {
       selectedTags.remove(tag);
     } else {
       selectedTags.add(tag);
@@ -19,6 +21,25 @@ class HomeController extends GetxController {
   void onInit() {
     super.onInit();
     fetchUserName();
+    fetchCourses();
+  }
+
+  Future<void> fetchCourses() async {
+    try {
+      isLoading.value = true;
+
+      final response = await client
+          .from('course')
+          .select()
+          .eq('is_published', true) // hanya kursus yang sudah publish
+          .order('created_at', ascending: false);
+
+      courses.assignAll(List<Map<String, dynamic>>.from(response));
+    } catch (e) {
+      Get.snackbar("Error", "Gagal memuat kursus: $e");
+    } finally {
+      isLoading.value = false;
+    }
   }
 
   Future<void> fetchUserName() async {

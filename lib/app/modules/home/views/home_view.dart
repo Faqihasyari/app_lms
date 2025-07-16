@@ -103,6 +103,77 @@ class HomeView extends GetView<HomeController> {
                 ),
               ],
             ),
+          ),
+          Obx(
+            () {
+              if (controller.isLoading.value) {
+                return Center(
+                  child: CircularProgressIndicator(),
+                );
+              }
+              if (controller.courses.isEmpty) {
+                return Center(
+                  child: Text('No courses found'),
+                );
+              }
+              return Expanded(
+                child: Padding(
+                  padding: EdgeInsets.all(20),
+                  child: GridView.builder(
+                    itemCount: controller.courses.length,
+                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 2,
+                      crossAxisSpacing: 16,
+                      mainAxisSpacing: 16,
+                      childAspectRatio: 3 / 4,
+                    ),
+                    itemBuilder: (context, index) {
+                      final course = controller.courses[index];
+                      final imageUrl = Supabase.instance.client.storage
+                          .from('course-image')
+                          .getPublicUrl(course['image_url'] ?? '');
+
+                      return Container(
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(16),
+                          boxShadow: [
+                            BoxShadow(blurRadius: 4, color: Colors.black12)
+                          ],
+                        ),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            ClipRRect(
+                              borderRadius: BorderRadius.vertical(
+                                  top: Radius.circular(16)),
+                              child: Image.network(
+                                imageUrl,
+                                width: double.infinity,
+                                height: 120,
+                                fit: BoxFit.cover,
+                                errorBuilder: (context, error, stackTrace) =>
+                                    Container(
+                                        color: Colors.grey.shade300,
+                                        height: 120),
+                              ),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Text(
+                                course['title'] ?? '',
+                                style: TextStyle(
+                                    fontWeight: FontWeight.bold, fontSize: 16),
+                              ),
+                            ),
+                          ],
+                        ),
+                      );
+                    },
+                  ),
+                ),
+              );
+            },
           )
         ],
       ),
