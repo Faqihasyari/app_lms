@@ -166,6 +166,15 @@ class HomeView extends GetView<HomeController> {
                                     fontWeight: FontWeight.bold, fontSize: 16),
                               ),
                             ),
+                            Padding(
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 8.0),
+                              child: Text(
+                                "by ${course['profile']?['full_name'] ?? 'Unknown'}",
+                                style:
+                                    TextStyle(color: Colors.grey, fontSize: 12),
+                              ),
+                            ),
                           ],
                         ),
                       );

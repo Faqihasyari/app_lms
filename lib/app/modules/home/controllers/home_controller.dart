@@ -30,8 +30,9 @@ class HomeController extends GetxController {
 
       final response = await client
           .from('course')
-          .select()
-          .eq('is_published', true) // hanya kursus yang sudah publish
+          .select(
+              '*, profile(full_name)') // ambil full_name dari relasi profile
+          .eq('is_published', true)
           .order('created_at', ascending: false);
 
       courses.assignAll(List<Map<String, dynamic>>.from(response));
