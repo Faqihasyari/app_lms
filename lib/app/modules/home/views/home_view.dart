@@ -148,7 +148,7 @@ class HomeView extends GetView<HomeController> {
                               borderRadius: BorderRadius.vertical(
                                   top: Radius.circular(16)),
                               child: Image.network(
-                                imageUrl,
+                                course['image_url'] ?? '',
                                 width: double.infinity,
                                 height: 120,
                                 fit: BoxFit.cover,
