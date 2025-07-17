@@ -7,6 +7,7 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 
 class AddCourseController extends GetxController {
   RxBool isLoading = false.obs;
+  RxString profileId = ''.obs;
   final SupabaseClient client = Supabase.instance.client;
   final titleC = TextEditingController();
   final desc = TextEditingController();
@@ -40,12 +41,26 @@ class AddCourseController extends GetxController {
   }
 
   Future<void> addCourse() async {
-    final userId = client.auth.currentUser?.id;
+    final userEmail = client.auth.currentUser?.email;
 
-    if (userId == null) {
+    if (userEmail == null) {
       Get.snackbar("Error", "User belum login atau token expired.");
       return;
     }
+
+    // Ambil ID dari tabel profile berdasarkan email login
+    final profile = await client
+        .from('profile')
+        .select('id')
+        .eq('email', userEmail)
+        .maybeSingle();
+
+    if (profile == null) {
+      Get.snackbar("Error", "Data profil tidak ditemukan.");
+      return;
+    }
+
+    final profileId = profile['id']; // ← inilah yang akan jadi created_by
 
     final title = titleC.text.trim();
     final description = desc.text.trim();
@@ -66,12 +81,13 @@ class AddCourseController extends GetxController {
       await client.from('course').insert({
         'title': title,
         'description': description,
-        'created_by': userId,
+        'created_by': profileId,
         'is_published': true,
         'image_url': imageUrl,
       });
 
-      Get.back(); // kembali ke halaman sebelumnya
+      Get.back();
+    
       Get.snackbar("Sukses", "Kursus berhasil ditambahkan.");
     } catch (e) {
       Get.snackbar("Error", "Gagal menambahkan kursus: $e");

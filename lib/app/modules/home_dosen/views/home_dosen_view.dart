@@ -116,7 +116,9 @@ class HomeDosenView extends GetView<HomeDosenController> {
       }),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          Get.toNamed(Routes.ADD_COURSE);
+          Get.toNamed(Routes.ADD_COURSE)?.then((_) {
+            controller.fetchCourses(); // otomatis refresh kursus
+          });
         },
         child: Icon(Icons.add),
       ),
