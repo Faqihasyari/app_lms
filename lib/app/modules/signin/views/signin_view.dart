@@ -47,7 +47,7 @@ class SigninView extends GetView<SigninController> {
                   TextField(
                     controller: controller.emailC,
                     decoration: InputDecoration(
-                      labelText: 'Email Here',
+                      hintText: 'Email Here',
                       labelStyle: GoogleFonts.plusJakartaSans(),
                       floatingLabelStyle: TextStyle(color: black),
                       border: OutlineInputBorder(
@@ -59,6 +59,7 @@ class SigninView extends GetView<SigninController> {
                           EdgeInsets.symmetric(horizontal: 16, vertical: 12),
                       focusedBorder: OutlineInputBorder(
                         borderSide: BorderSide(color: ring),
+                        borderRadius: BorderRadius.circular(10),
                       ),
                     ),
                   ),

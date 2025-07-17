@@ -2,6 +2,8 @@ import 'package:get/get.dart';
 
 import '../modules/add_course/bindings/add_course_binding.dart';
 import '../modules/add_course/views/add_course_view.dart';
+import '../modules/detail_overview/bindings/detail_overview_binding.dart';
+import '../modules/detail_overview/views/detail_overview_view.dart';
 import '../modules/home/bindings/home_binding.dart';
 import '../modules/home/views/home_view.dart';
 import '../modules/home_dosen/bindings/home_dosen_binding.dart';
@@ -58,6 +60,11 @@ class AppPages {
       name: _Paths.ADD_COURSE,
       page: () => const AddCourseView(),
       binding: AddCourseBinding(),
+    ),
+    GetPage(
+      name: _Paths.DETAIL_OVERVIEW,
+      page: () => const DetailOverviewView(),
+      binding: DetailOverviewBinding(),
     ),
   ];
 }

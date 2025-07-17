@@ -1,3 +1,4 @@
+import 'package:app_lms/app/routes/app_pages.dart';
 import 'package:app_lms/theme/theme.dart';
 import 'package:flutter/material.dart';
 
@@ -133,49 +134,55 @@ class HomeView extends GetView<HomeController> {
                           .from('course-image')
                           .getPublicUrl(course['image_url'] ?? '');
 
-                      return Container(
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(16),
-                          boxShadow: [
-                            BoxShadow(blurRadius: 4, color: Colors.black12)
-                          ],
-                        ),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            ClipRRect(
-                              borderRadius: BorderRadius.vertical(
-                                  top: Radius.circular(16)),
-                              child: Image.network(
-                                course['image_url'] ?? '',
-                                width: double.infinity,
-                                height: 120,
-                                fit: BoxFit.cover,
-                                errorBuilder: (context, error, stackTrace) =>
-                                    Container(
-                                        color: Colors.grey.shade300,
-                                        height: 120),
+                      return GestureDetector(
+                        onTap: () {
+                          Get.offAllNamed(Routes.DETAIL_OVERVIEW);
+                        },
+                        child: Container(
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(16),
+                            boxShadow: [
+                              BoxShadow(blurRadius: 4, color: Colors.black12)
+                            ],
+                          ),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              ClipRRect(
+                                borderRadius: BorderRadius.vertical(
+                                    top: Radius.circular(16)),
+                                child: Image.network(
+                                  course['image_url'] ?? '',
+                                  width: double.infinity,
+                                  height: 120,
+                                  fit: BoxFit.cover,
+                                  errorBuilder: (context, error, stackTrace) =>
+                                      Container(
+                                          color: Colors.grey.shade300,
+                                          height: 120),
+                                ),
                               ),
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Text(
-                                course['title'] ?? '',
-                                style: TextStyle(
-                                    fontWeight: FontWeight.bold, fontSize: 16),
+                              Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Text(
+                                  course['title'] ?? '',
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 16),
+                                ),
                               ),
-                            ),
-                            Padding(
-                              padding:
-                                  const EdgeInsets.symmetric(horizontal: 8.0),
-                              child: Text(
-                                "by ${course['profile']?['full_name'] ?? 'Unknown'}",
-                                style:
-                                    TextStyle(color: Colors.grey, fontSize: 12),
+                              Padding(
+                                padding:
+                                    const EdgeInsets.symmetric(horizontal: 8.0),
+                                child: Text(
+                                  "by ${course['profile']?['full_name'] ?? 'Unknown'}",
+                                  style: TextStyle(
+                                      color: Colors.grey, fontSize: 12),
+                                ),
                               ),
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
                       );
                     },
