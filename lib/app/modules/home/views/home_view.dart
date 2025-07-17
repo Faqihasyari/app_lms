@@ -136,7 +136,7 @@ class HomeView extends GetView<HomeController> {
 
                       return GestureDetector(
                         onTap: () {
-                          Get.offAllNamed(Routes.DETAIL_OVERVIEW);
+                          Get.toNamed(Routes.DETAIL_OVERVIEW, arguments: course);
                         },
                         child: Container(
                           decoration: BoxDecoration(

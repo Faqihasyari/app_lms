@@ -63,7 +63,7 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.DETAIL_OVERVIEW,
-      page: () => const DetailOverviewView(),
+      page: () =>  DetailOverviewView(),
       binding: DetailOverviewBinding(),
     ),
   ];
