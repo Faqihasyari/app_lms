@@ -2,6 +2,7 @@ import 'package:app_lms/theme/theme.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import '../controllers/detail_overview_controller.dart';
 
@@ -22,6 +23,32 @@ class DetailOverviewView extends GetView<DetailOverviewController> {
                 children: [
                   Image.network(
                     course['image_url'] ?? '',
+                  ),
+                  SizedBox(
+                    height: 5,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      Text(
+                        'Overview',
+                        style: GoogleFonts.plusJakartaSans(
+                            fontWeight: FontWeight.bold, fontSize: 16),
+                      ),
+                      Text(
+                        'Lesson',
+                        style: GoogleFonts.plusJakartaSans(
+                            fontWeight: FontWeight.bold, fontSize: 16),
+                      ),
+                      Text(
+                        'Reviews',
+                        style: GoogleFonts.plusJakartaSans(
+                            fontWeight: FontWeight.bold, fontSize: 16),
+                      ),
+                    ],
+                  ),
+                  Divider(
+                    height: 8,
                   )
                 ],
               );
