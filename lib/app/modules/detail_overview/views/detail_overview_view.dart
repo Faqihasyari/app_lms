@@ -1,6 +1,5 @@
 import 'package:app_lms/theme/theme.dart';
 import 'package:flutter/material.dart';
-
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -10,77 +9,115 @@ class DetailOverviewView extends GetView<DetailOverviewController> {
   final course = Get.arguments as Map<String, dynamic>;
 
   DetailOverviewView({super.key});
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return DefaultTabController(
+      length: 3,
+      child: Scaffold(
         extendBodyBehindAppBar: true,
-        body: Stack(children: [
-          ListView.builder(
-            itemCount: 1,
-            itemBuilder: (context, index) {
-              final course = Get.arguments as Map<String, dynamic>;
-              return Column(
-                children: [
-                  Image.network(
-                    course['image_url'] ?? '',
+        body: Stack(
+          children: [
+            ListView(
+              children: [
+                // Image Header
+                Image.network(
+                  course['image_url'] ?? '',
+                  height: 220,
+                  width: double.infinity,
+                  fit: BoxFit.cover,
+                ),
+
+                // TabBar
+                Container(
+                  color: Colors.white,
+                  child: TabBar(
+                    indicatorColor: Colors.blue,
+                    labelColor: Colors.blue,
+                    unselectedLabelColor: Colors.black,
+                    indicatorWeight: 3,
+                    labelStyle: GoogleFonts.plusJakartaSans(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 16,
+                    ),
+                    tabs: const [
+                      Tab(text: 'Overview'),
+                      Tab(text: 'Lessons'),
+                      Tab(text: 'Reviews'),
+                    ],
                   ),
-                  SizedBox(
-                    height: 5,
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                ),
+
+                // TabBarView
+                SizedBox(
+                  height: 600, // adjust height as needed
+                  child: TabBarView(
                     children: [
-                      Text(
-                        'Overview',
-                        style: GoogleFonts.plusJakartaSans(
-                            fontWeight: FontWeight.bold, fontSize: 16),
+                      // Overview Tab
+                      Padding(
+                          padding: const EdgeInsets.all(16.0),
+                          child: Column(
+                            children: [
+                              Text(
+                                course['title'] ?? '',
+                                style: GoogleFonts.plusJakartaSans(
+                                    fontWeight: FontWeight.w600, fontSize: 20),
+                              ),
+                              Text(
+                                'by ${course['profile'] != null && course['profile']['full_name'] != null ? course['profile']['full_name'] as String : 'Unknown'}',
+                              ),
+                            ],
+                          )),
+
+                      // Lessons Tab
+                      Padding(
+                        padding: const EdgeInsets.all(16.0),
+                        child: Text(
+                          "This is the Lessons tab content",
+                          style: TextStyle(fontSize: 16),
+                        ),
                       ),
-                      Text(
-                        'Lesson',
-                        style: GoogleFonts.plusJakartaSans(
-                            fontWeight: FontWeight.bold, fontSize: 16),
-                      ),
-                      Text(
-                        'Reviews',
-                        style: GoogleFonts.plusJakartaSans(
-                            fontWeight: FontWeight.bold, fontSize: 16),
+
+                      // Reviews Tab
+                      Padding(
+                        padding: const EdgeInsets.all(16.0),
+                        child: Text(
+                          "This is the Reviews tab content",
+                          style: TextStyle(fontSize: 16),
+                        ),
                       ),
                     ],
                   ),
-                  Divider(
-                    height: 8,
-                  )
-                ],
-              );
-            },
-          ),
-          Positioned(
+                )
+              ],
+            ),
+
+            // Custom AppBar (Back + Bookmark)
+            Positioned(
               top: MediaQuery.of(context).padding.top,
               left: 0,
               right: 0,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  IconButton(
-                    onPressed: () {
-                      Get.back();
-                    },
-                    icon: Icon(
-                      Icons.arrow_back,
-                      color: black,
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 12.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    IconButton(
+                      onPressed: () => Get.back(),
+                      icon: const Icon(Icons.arrow_back, color: Colors.white),
                     ),
-                  ),
-                  IconButton(
-                    onPressed: () {
-                      Get.back();
-                    },
-                    icon: Icon(
-                      Icons.bookmark,
-                      color: black,
+                    IconButton(
+                      onPressed: () {},
+                      icon: const Icon(Icons.bookmark_border,
+                          color: Colors.white),
                     ),
-                  ),
-                ],
-              ))
-        ]));
+                  ],
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
   }
 }
