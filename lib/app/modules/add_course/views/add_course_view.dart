@@ -111,7 +111,7 @@ class AddCourseView extends GetView<AddCourseController> {
                     controller: controller.discountPercentC,
                     keyboardType: TextInputType.number,
                     decoration: InputDecoration(
-                      labelText: "Diskon (%)",
+                      labelText: "Diskon %",
                       prefixIcon: Icon(Icons.percent),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(12),
