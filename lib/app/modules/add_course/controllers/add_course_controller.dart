@@ -14,13 +14,13 @@ class AddCourseController extends GetxController {
   final ImagePicker picker = ImagePicker();
   Rx<File?> selectedImage = Rx<File?>(null);
   // Tambahan import
-final priceC = TextEditingController();
-final lectureCountC = TextEditingController();
-final durationWeeksC = TextEditingController();
-final skillsC = TextEditingController();
-final discountPercentC = TextEditingController();
+  final priceC = TextEditingController();
+  final lectureCountC = TextEditingController();
+  final durationWeeksC = TextEditingController();
+  final skillsC = TextEditingController();
+  final discountPercentC = TextEditingController();
 
-RxBool hasCertificate = false.obs;
+  RxBool hasCertificate = false.obs;
 
   Future<void> pickImage() async {
     final pickedFile = await picker.pickImage(source: ImageSource.gallery);
@@ -52,15 +52,15 @@ RxBool hasCertificate = false.obs;
     final userEmail = client.auth.currentUser?.email;
     // COBA
     final price = double.tryParse(priceC.text.trim()) ?? 0.0;
-final lectureCount = int.tryParse(lectureCountC.text.trim()) ?? 0;
-final durationWeeks = int.tryParse(durationWeeksC.text.trim()) ?? 0;
-final discountPercent = double.tryParse(discountPercentC.text.trim()) ?? 0.0;
-final skills = skillsC.text.trim();
-final rawSkills = skillsC.text.trim();
-final skillsList = rawSkills.split(',').map((e) => e.trim()).toList();
+    final lectureCount = int.tryParse(lectureCountC.text.trim()) ?? 0;
+    final durationWeeks = int.tryParse(durationWeeksC.text.trim()) ?? 0;
+    final discountPercent =
+        double.tryParse(discountPercentC.text.trim()) ?? 0.0;
+    final skills = skillsC.text.trim();
+    final rawSkills = skillsC.text.trim();
+    final skillsList = rawSkills.split(',').map((e) => e.trim()).toList();
 
-final hasCert = hasCertificate.value;
-    
+    final hasCert = hasCertificate.value;
 
     if (userEmail == null) {
       Get.snackbar("Error", "User belum login atau token expired.");
@@ -105,21 +105,21 @@ final hasCert = hasCertificate.value;
       //   'image_url': imageUrl,
       // });
       await client.from('course').insert({
-  'title': title,
-  'description': description,
-  'created_by': profileId,
-  'is_published': true,
-  'image_url': imageUrl,
-  'price': price,
-  'lecture_count': lectureCount,
-  'duration_weeks': durationWeeks,
-  'has_certificate': hasCert,
-  'skills': skills,
-  'discount_percent': discountPercent,
-});
+        'title': title,
+        'description': description,
+        'created_by': profileId,
+        'is_published': true,
+        'image_url': imageUrl,
+        'price': price,
+        'lecture_count': lectureCount,
+        'duration_weeks': durationWeeks,
+        'has_certificate': hasCert,
+        'skills': skillsList, // ARRAY!
+        'discount_percent': discountPercent,
+      });
 
       Get.back();
-    
+
       Get.snackbar("Sukses", "Kursus berhasil ditambahkan.");
     } catch (e) {
       Get.snackbar("Error", "Gagal menambahkan kursus: $e");

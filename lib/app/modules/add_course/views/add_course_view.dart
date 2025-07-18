@@ -36,7 +36,7 @@ class AddCourseView extends GetView<AddCourseController> {
                   ),
                   const SizedBox(height: 20),
 
-                  // Input Judul
+                  // Judul Kursus
                   TextFormField(
                     controller: controller.titleC,
                     decoration: InputDecoration(
@@ -49,7 +49,7 @@ class AddCourseView extends GetView<AddCourseController> {
                   ),
                   const SizedBox(height: 15),
 
-                  // Input Deskripsi
+                  // Deskripsi
                   TextFormField(
                     controller: controller.desc,
                     maxLines: 4,
@@ -62,7 +62,87 @@ class AddCourseView extends GetView<AddCourseController> {
                       ),
                     ),
                   ),
-                  const SizedBox(height: 20),
+                  const SizedBox(height: 15),
+
+                  // Harga
+                  TextFormField(
+                    controller: controller.priceC,
+                    keyboardType: TextInputType.number,
+                    decoration: InputDecoration(
+                      labelText: "Harga Kursus (Rp)",
+                      prefixIcon: Icon(Icons.attach_money),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: 15),
+
+                  // Jumlah Pertemuan
+                  TextFormField(
+                    controller: controller.lectureCountC,
+                    keyboardType: TextInputType.number,
+                    decoration: InputDecoration(
+                      labelText: "Jumlah Pertemuan",
+                      prefixIcon: Icon(Icons.school),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: 15),
+
+                  // Durasi Kursus (minggu)
+                  TextFormField(
+                    controller: controller.durationWeeksC,
+                    keyboardType: TextInputType.number,
+                    decoration: InputDecoration(
+                      labelText: "Durasi (Minggu)",
+                      prefixIcon: Icon(Icons.timer),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: 15),
+
+                  // Diskon (%)
+                  TextFormField(
+                    controller: controller.discountPercentC,
+                    keyboardType: TextInputType.number,
+                    decoration: InputDecoration(
+                      labelText: "Diskon (%)",
+                      prefixIcon: Icon(Icons.percent),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: 15),
+
+                  // Checkbox Sertifikat
+                  Obx(() => CheckboxListTile(
+                        title: const Text("Kursus memberikan sertifikat"),
+                        value: controller.hasCertificate.value,
+                        onChanged: (val) {
+                          if (val != null)
+                            controller.hasCertificate.value = val;
+                        },
+                      )),
+                  const SizedBox(height: 15),
+
+                  // Input Skill (comma separated)
+                  TextFormField(
+                    controller: controller.skillsC,
+                    decoration: InputDecoration(
+                      labelText: "Skill yang Dipelajari (pisahkan dengan koma)",
+                      prefixIcon: Icon(Icons.star),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: 15),
 
                   // Image Picker
                   Obx(() {
@@ -97,7 +177,6 @@ class AddCourseView extends GetView<AddCourseController> {
                       ),
                     );
                   }),
-
                   const SizedBox(height: 25),
 
                   // Tombol Simpan
