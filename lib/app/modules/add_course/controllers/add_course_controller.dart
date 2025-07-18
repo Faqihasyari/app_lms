@@ -13,6 +13,14 @@ class AddCourseController extends GetxController {
   final desc = TextEditingController();
   final ImagePicker picker = ImagePicker();
   Rx<File?> selectedImage = Rx<File?>(null);
+  // Tambahan import
+final priceC = TextEditingController();
+final lectureCountC = TextEditingController();
+final durationWeeksC = TextEditingController();
+final skillsC = TextEditingController();
+final discountPercentC = TextEditingController();
+
+RxBool hasCertificate = false.obs;
 
   Future<void> pickImage() async {
     final pickedFile = await picker.pickImage(source: ImageSource.gallery);
@@ -42,6 +50,17 @@ class AddCourseController extends GetxController {
 
   Future<void> addCourse() async {
     final userEmail = client.auth.currentUser?.email;
+    // COBA
+    final price = double.tryParse(priceC.text.trim()) ?? 0.0;
+final lectureCount = int.tryParse(lectureCountC.text.trim()) ?? 0;
+final durationWeeks = int.tryParse(durationWeeksC.text.trim()) ?? 0;
+final discountPercent = double.tryParse(discountPercentC.text.trim()) ?? 0.0;
+final skills = skillsC.text.trim();
+final rawSkills = skillsC.text.trim();
+final skillsList = rawSkills.split(',').map((e) => e.trim()).toList();
+
+final hasCert = hasCertificate.value;
+    
 
     if (userEmail == null) {
       Get.snackbar("Error", "User belum login atau token expired.");
@@ -78,13 +97,26 @@ class AddCourseController extends GetxController {
         imageUrl = await uploadImage(selectedImage.value!);
       }
 
+      // await client.from('course').insert({
+      //   'title': title,
+      //   'description': description,
+      //   'created_by': profileId,
+      //   'is_published': true,
+      //   'image_url': imageUrl,
+      // });
       await client.from('course').insert({
-        'title': title,
-        'description': description,
-        'created_by': profileId,
-        'is_published': true,
-        'image_url': imageUrl,
-      });
+  'title': title,
+  'description': description,
+  'created_by': profileId,
+  'is_published': true,
+  'image_url': imageUrl,
+  'price': price,
+  'lecture_count': lectureCount,
+  'duration_weeks': durationWeeks,
+  'has_certificate': hasCert,
+  'skills': skills,
+  'discount_percent': discountPercent,
+});
 
       Get.back();
     
