@@ -51,12 +51,14 @@ class DetailOverviewView extends GetView<DetailOverviewController> {
                 // TabBarView
                 SizedBox(
                   height: 600, // adjust height as needed
+                  
                   child: TabBarView(
                     children: [
                       // Overview Tab
                       Padding(
                           padding: const EdgeInsets.all(16.0),
                           child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
                                 course['title'] ?? '',
@@ -66,6 +68,10 @@ class DetailOverviewView extends GetView<DetailOverviewController> {
                               Text(
                                 'by ${course['profile'] != null && course['profile']['full_name'] != null ? course['profile']['full_name'] as String : 'Unknown'}',
                               ),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.end,
+                                children: [Text('hjasvdhjasvd')],
+                              )
                             ],
                           )),
 
