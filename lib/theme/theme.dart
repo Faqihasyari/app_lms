@@ -6,6 +6,8 @@ Color black = Color(0xff040404);
 Color side = Color(0xff003096);
 Color ring = Color(0xffD9D9D9);
 Color hint = Color(0xffB5B5B5);
+Color kolom = Color(0xff003096);
+
 
 
 

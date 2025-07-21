@@ -96,6 +96,15 @@ class DetailOverviewView extends GetView<DetailOverviewController> {
                                   trimExpandedText: ' Show less',
                                   style: TextStyle(fontSize: 14),
                                 ),
+                              ),
+                              Container(
+                                height: 97,
+                                margin: EdgeInsets.all(16),
+                                padding: EdgeInsets.all(16),
+                                decoration: BoxDecoration(
+                                  color: kolom.withOpacity(0.15),
+                                  borderRadius: BorderRadius.circular(10),
+                                ),
                               )
                             ],
                           )),
