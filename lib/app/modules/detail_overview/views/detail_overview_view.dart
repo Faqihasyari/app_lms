@@ -2,6 +2,7 @@ import 'package:app_lms/theme/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:readmore/readmore.dart';
 
 import '../controllers/detail_overview_controller.dart';
 
@@ -15,6 +16,7 @@ class DetailOverviewView extends GetView<DetailOverviewController> {
     return DefaultTabController(
       length: 3,
       child: Scaffold(
+        backgroundColor: white,
         extendBodyBehindAppBar: true,
         body: Stack(
           children: [
@@ -85,8 +87,15 @@ class DetailOverviewView extends GetView<DetailOverviewController> {
                               ),
                               SizedBox(
                                 width: Get.width * 0.9,
-                                child: Rea(
-                                    'Lorem ipsum dolor sit amet consectetur. Nec eget accumsan molestie proin. Integer rhoncus vitae nisi natoque ac mus tellus scelerisque gravida. Consectetur aliquet sit at diam. Augue eu mauris suspendisse adipiscing nibh. Nibh lorem id eu suspendisse nulla leo hendrerit. Erat tortor commodo quam fames et molestie'),
+                                child: ReadMoreText(
+                                  'Lorem ipsum dolor sit amet consectetur. Nec eget accumsan molestie proin. Integer rhoncus vitae nisi natoque ac mus tellus scelerisque gravida. Consectetur aliquet sit at diam. Augue eu mauris suspendisse adipiscing nibh. Nibh lorem id eu suspendisse nulla leo hendrerit. Erat tortor commodo quam fames et molestie',
+                                  trimLines: 5,
+                                  colorClickableText: Colors.blue,
+                                  trimMode: TrimMode.Line,
+                                  trimCollapsedText: '...Read more',
+                                  trimExpandedText: ' Show less',
+                                  style: TextStyle(fontSize: 14),
+                                ),
                               )
                             ],
                           )),
