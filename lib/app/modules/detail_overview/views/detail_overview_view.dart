@@ -51,7 +51,7 @@ class DetailOverviewView extends GetView<DetailOverviewController> {
                 // TabBarView
                 SizedBox(
                   height: 600, // adjust height as needed
-                  
+
                   child: TabBarView(
                     children: [
                       // Overview Tab

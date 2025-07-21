@@ -133,10 +133,11 @@ class HomeView extends GetView<HomeController> {
                       final imageUrl = Supabase.instance.client.storage
                           .from('course-image')
                           .getPublicUrl(course['image_url'] ?? '');
-
+                      print(course);
                       return GestureDetector(
                         onTap: () {
-                          Get.toNamed(Routes.DETAIL_OVERVIEW, arguments: course);
+                          Get.toNamed(Routes.DETAIL_OVERVIEW,
+                              arguments: course);
                         },
                         child: Container(
                           decoration: BoxDecoration(
