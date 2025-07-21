@@ -102,8 +102,26 @@ class DetailOverviewView extends GetView<DetailOverviewController> {
                                 margin: EdgeInsets.all(16),
                                 padding: EdgeInsets.all(16),
                                 decoration: BoxDecoration(
-                                  color: kolom.withOpacity(0.15),
+                                  // ignore: deprecated_member_use
+                                  color: kolom.withOpacity(0.25),
                                   borderRadius: BorderRadius.circular(10),
+                                ),
+                                child: Column(
+                                  spacing: 20,
+                                  children: [
+                                    Row(
+                                      children: [
+                                        Expanded(child: Text('jhasbdad')),
+                                        Text('ajksbdkjabsd')
+                                      ],
+                                    ),
+                                    Row(
+                                      children: [
+                                        Expanded(child: Text('jhasbdad')),
+                                        Text('ajksbdkjabsd')
+                                      ],
+                                    )
+                                  ],
                                 ),
                               )
                             ],
