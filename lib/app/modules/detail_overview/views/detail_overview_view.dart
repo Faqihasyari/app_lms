@@ -65,12 +65,28 @@ class DetailOverviewView extends GetView<DetailOverviewController> {
                                 style: GoogleFonts.plusJakartaSans(
                                     fontWeight: FontWeight.w600, fontSize: 20),
                               ),
-                              Text(
-                                'by ${course['profile'] != null && course['profile']['full_name'] != null ? course['profile']['full_name'] as String : 'Unknown'}',
-                              ),
                               Row(
-                                mainAxisAlignment: MainAxisAlignment.end,
-                                children: [Text('hjasvdhjasvd')],
+                                children: [
+                                  Expanded(
+                                    child: Text(
+                                      'by ${course['profile'] != null && course['profile']['full_name'] != null ? course['profile']['full_name'] as String : 'Unknown'}',
+                                    ),
+                                  ),
+                                  Text(
+                                    '${course['price'] ?? ''} \$',
+                                    style: GoogleFonts.plusJakartaSans(
+                                        fontWeight: FontWeight.w600,
+                                        fontSize: 18),
+                                  ),
+                                ],
+                              ),
+                              SizedBox(
+                                height: 20,
+                              ),
+                              SizedBox(
+                                width: Get.width * 0.9,
+                                child: Rea(
+                                    'Lorem ipsum dolor sit amet consectetur. Nec eget accumsan molestie proin. Integer rhoncus vitae nisi natoque ac mus tellus scelerisque gravida. Consectetur aliquet sit at diam. Augue eu mauris suspendisse adipiscing nibh. Nibh lorem id eu suspendisse nulla leo hendrerit. Erat tortor commodo quam fames et molestie'),
                               )
                             ],
                           )),
