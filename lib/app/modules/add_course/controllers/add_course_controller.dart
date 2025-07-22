@@ -51,7 +51,7 @@ class AddCourseController extends GetxController {
   Future<void> addCourse() async {
     final userEmail = client.auth.currentUser?.email;
     // COBA
-    final price = int.tryParse(priceC.text.trim()) ?? 0.0;
+    final price = double.tryParse(priceC.text.trim()) ?? 0.0;
     final lectureCount = int.tryParse(lectureCountC.text.trim()) ?? 0;
     final durationWeeks = int.tryParse(durationWeeksC.text.trim()) ?? 0;
     final discountPercent = int.tryParse(discountPercentC.text.trim()) ?? 0.0;

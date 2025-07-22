@@ -2,6 +2,7 @@ import 'package:app_lms/theme/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:readmore/readmore.dart';
 
 import '../controllers/detail_overview_controller.dart';
@@ -107,7 +108,7 @@ class DetailOverviewView extends GetView<DetailOverviewController> {
                                   borderRadius: BorderRadius.circular(10),
                                 ),
                                 child: Column(
-                                  spacing: 20,
+                                  spacing: 15,
                                   children: [
                                     Row(
                                       children: [
@@ -129,11 +130,18 @@ class DetailOverviewView extends GetView<DetailOverviewController> {
                                         )),
                                         Row(
                                           children: [
-                                            Icon(Icons.ce)
+                                            Icon(
+                                              MdiIcons.certificate,
+                                              color: kolom,
+                                            ),
                                             Text(
                                               course['has_certificate'] == true
                                                   ? 'Certificate'
                                                   : 'No Certificate',
+                                              style:
+                                                  GoogleFonts.plusJakartaSans(
+                                                      fontWeight:
+                                                          FontWeight.w500),
                                             ),
                                           ],
                                         )
@@ -141,10 +149,22 @@ class DetailOverviewView extends GetView<DetailOverviewController> {
                                     ),
                                     Row(
                                       children: [
-                                        Expanded(child: Text('jhasbdad')),
+                                        Expanded(
+                                            child: Row(
+                                          children: [
+                                            Icon(MdiIcons.clock),
+                                            Text(
+                                              '${course['duration_weeks'] ?? ''} Weeks',
+                                              style:
+                                                  GoogleFonts.plusJakartaSans(
+                                                      fontWeight:
+                                                          FontWeight.w500),
+                                            ),
+                                          ],
+                                        )),
                                         Text('ajksbdkjabsd')
                                       ],
-                                    )
+                                    ),
                                   ],
                                 ),
                               )
