@@ -111,6 +111,9 @@ class DetailOverviewView extends GetView<DetailOverviewController> {
                                   spacing: 15,
                                   children: [
                                     Row(
+                                      spacing: 100,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
                                       children: [
                                         Expanded(
                                             child: Row(
@@ -128,26 +131,30 @@ class DetailOverviewView extends GetView<DetailOverviewController> {
                                             ),
                                           ],
                                         )),
-                                        Row(
-                                          children: [
-                                            Icon(
-                                              MdiIcons.certificate,
-                                              color: kolom,
-                                            ),
-                                            Text(
-                                              course['has_certificate'] == true
-                                                  ? 'Certificate'
-                                                  : 'No Certificate',
-                                              style:
-                                                  GoogleFonts.plusJakartaSans(
-                                                      fontWeight:
-                                                          FontWeight.w500),
-                                            ),
-                                          ],
+                                        Expanded(
+                                          child: Row(
+                                            children: [
+                                              Icon(
+                                                MdiIcons.certificate,
+                                                color: kolom,
+                                              ),
+                                              Text(
+                                                course['has_certificate'] ==
+                                                        true
+                                                    ? 'Certificate'
+                                                    : 'No Certificate',
+                                                style:
+                                                    GoogleFonts.plusJakartaSans(
+                                                        fontWeight:
+                                                            FontWeight.w500),
+                                              ),
+                                            ],
+                                          ),
                                         )
                                       ],
                                     ),
                                     Row(
+                                      spacing: 100,
                                       children: [
                                         Expanded(
                                             child: Row(
@@ -165,15 +172,17 @@ class DetailOverviewView extends GetView<DetailOverviewController> {
                                             ),
                                           ],
                                         )),
-                                        Row(
-                                          children: [
-                                            Icon(
-                                              MdiIcons.sale,
-                                              color: kolom,
-                                            ),
-                                            Text(
-                                                '${course['discount_percent'] ?? ''}% Off'),
-                                          ],
+                                        Expanded(
+                                          child: Row(
+                                            children: [
+                                              Icon(
+                                                MdiIcons.sale,
+                                                color: kolom,
+                                              ),
+                                              Text(
+                                                  '${course['discount_percent'] ?? ''}% Off'),
+                                            ],
+                                          ),
                                         )
                                       ],
                                     ),
