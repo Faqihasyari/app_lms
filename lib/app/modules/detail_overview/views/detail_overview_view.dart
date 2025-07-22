@@ -127,7 +127,16 @@ class DetailOverviewView extends GetView<DetailOverviewController> {
                                             ),
                                           ],
                                         )),
-                                        Text('ajksbdkjabsd')
+                                        Row(
+                                          children: [
+                                            Icon(Icons.ce)
+                                            Text(
+                                              course['has_certificate'] == true
+                                                  ? 'Certificate'
+                                                  : 'No Certificate',
+                                            ),
+                                          ],
+                                        )
                                       ],
                                     ),
                                     Row(
