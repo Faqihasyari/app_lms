@@ -152,7 +152,10 @@ class DetailOverviewView extends GetView<DetailOverviewController> {
                                         Expanded(
                                             child: Row(
                                           children: [
-                                            Icon(MdiIcons.clock),
+                                            Icon(
+                                              MdiIcons.clock,
+                                              color: kolom,
+                                            ),
                                             Text(
                                               '${course['duration_weeks'] ?? ''} Weeks',
                                               style:
@@ -162,7 +165,16 @@ class DetailOverviewView extends GetView<DetailOverviewController> {
                                             ),
                                           ],
                                         )),
-                                        Text('ajksbdkjabsd')
+                                        Row(
+                                          children: [
+                                            Icon(
+                                              MdiIcons.sale,
+                                              color: kolom,
+                                            ),
+                                            Text(
+                                                '${course['discount_percent'] ?? ''}% Off'),
+                                          ],
+                                        )
                                       ],
                                     ),
                                   ],
