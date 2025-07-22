@@ -111,7 +111,22 @@ class DetailOverviewView extends GetView<DetailOverviewController> {
                                   children: [
                                     Row(
                                       children: [
-                                        Expanded(child: Text('jhasbdad')),
+                                        Expanded(
+                                            child: Row(
+                                          children: [
+                                            Icon(
+                                              Icons.book,
+                                              color: kolom,
+                                            ),
+                                            Text(
+                                              '${course['lectures_count'] ?? ''} Lectures',
+                                              style:
+                                                  GoogleFonts.plusJakartaSans(
+                                                      fontWeight:
+                                                          FontWeight.w500),
+                                            ),
+                                          ],
+                                        )),
                                         Text('ajksbdkjabsd')
                                       ],
                                     ),
