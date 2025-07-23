@@ -116,27 +116,36 @@ class DetailOverviewView extends GetView<DetailOverviewController> {
                                           MainAxisAlignment.spaceBetween,
                                       children: [
                                         Expanded(
-                                            child: Row(
-                                          children: [
-                                            Icon(
-                                              Icons.book,
-                                              color: kolom,
-                                            ),
-                                            Text(
-                                              '${course['lectures_count'] ?? ''} Lectures',
-                                              style:
-                                                  GoogleFonts.plusJakartaSans(
-                                                      fontWeight:
-                                                          FontWeight.w500),
-                                            ),
-                                          ],
+                                            child: SingleChildScrollView(
+                                          scrollDirection: Axis.horizontal,
+                                          child: Row(
+                                            children: [
+                                              Icon(
+                                                Icons.book,
+                                                color: kolom,
+                                              ),
+                                              SizedBox(
+                                                width: 6,
+                                              ),
+                                              Text(
+                                                '${course['lectures_count'] ?? ''} Lectures',
+                                                style:
+                                                    GoogleFonts.plusJakartaSans(
+                                                        fontWeight:
+                                                            FontWeight.w500),
+                                              ),
+                                            ],
+                                          ),
                                         )),
                                         Expanded(
                                           child: Row(
                                             children: [
                                               Icon(
-                                                MdiIcons.certificate,
+                                                MdiIcons.cart,
                                                 color: kolom,
+                                              ),
+                                              SizedBox(
+                                                width: 6,
                                               ),
                                               Text(
                                                 course['has_certificate'] ==
@@ -163,6 +172,9 @@ class DetailOverviewView extends GetView<DetailOverviewController> {
                                               MdiIcons.clock,
                                               color: kolom,
                                             ),
+                                            SizedBox(
+                                              width: 6,
+                                            ),
                                             Text(
                                               '${course['duration_weeks'] ?? ''} Weeks',
                                               style:
@@ -179,16 +191,24 @@ class DetailOverviewView extends GetView<DetailOverviewController> {
                                                 MdiIcons.sale,
                                                 color: kolom,
                                               ),
+                                              SizedBox(
+                                                width: 6,
+                                              ),
                                               Text(
                                                   '${course['discount_percent'] ?? ''}% Off'),
                                             ],
                                           ),
-                                        )
+                                        ),
                                       ],
                                     ),
                                   ],
                                 ),
-                              )
+                              ),
+                              Text(
+                                'Skills',
+                                style: GoogleFonts.plusJakartaSans(
+                                    fontSize: 20, fontWeight: FontWeight.w600),
+                              ),
                             ],
                           )),
 
