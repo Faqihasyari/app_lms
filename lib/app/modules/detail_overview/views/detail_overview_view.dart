@@ -215,10 +215,13 @@ class DetailOverviewView extends GetView<DetailOverviewController> {
                       // Lessons Tab
                       Padding(
                         padding: const EdgeInsets.all(16.0),
-                        child: Text(
-                          "This is the Lessons tab content",
-                          style: TextStyle(fontSize: 16),
-                        ),
+                        child: Column(
+                          children: [
+                            Container(
+                              decoration: ,
+                            )
+                          ],
+                        )
                       ),
 
                       // Reviews Tab
