@@ -209,6 +209,33 @@ class DetailOverviewView extends GetView<DetailOverviewController> {
                                 style: GoogleFonts.plusJakartaSans(
                                     fontSize: 20, fontWeight: FontWeight.w600),
                               ),
+                              Wrap(
+                                spacing: 12,
+                                runSpacing: 12,
+                                children: (course['skills'] as List<dynamic>?)
+                                        ?.map((skill) => Container(
+                                              padding:
+                                                  const EdgeInsets.symmetric(
+                                                      horizontal: 16,
+                                                      vertical: 10),
+                                              decoration: BoxDecoration(
+                                                border: Border.all(
+                                                    color:
+                                                        Colors.grey.shade300),
+                                                borderRadius:
+                                                    BorderRadius.circular(30),
+                                              ),
+                                              child: Text(
+                                                skill.toString(),
+                                                style: const TextStyle(
+                                                  fontSize: 14,
+                                                  fontWeight: FontWeight.w500,
+                                                ),
+                                              ),
+                                            ))
+                                        .toList() ??
+                                    [const Text('No skills')],
+                              ),
                             ],
                           )),
 
