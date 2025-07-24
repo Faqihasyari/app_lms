@@ -209,6 +209,9 @@ class DetailOverviewView extends GetView<DetailOverviewController> {
                                 style: GoogleFonts.plusJakartaSans(
                                     fontSize: 20, fontWeight: FontWeight.w600),
                               ),
+                              SizedBox(
+                                height: 10,
+                              ),
                               Wrap(
                                 spacing: 12,
                                 runSpacing: 12,
@@ -245,7 +248,14 @@ class DetailOverviewView extends GetView<DetailOverviewController> {
                           child: Column(
                             children: [
                               Container(
-                                decoration: BoxDecoration(),
+                                height: 97,
+                                margin: EdgeInsets.all(16),
+                                padding: EdgeInsets.all(16),
+                                decoration: BoxDecoration(
+                                  // ignore: deprecated_member_use
+                                  color: kolom.withOpacity(0.25),
+                                  borderRadius: BorderRadius.circular(10),
+                                ),
                               )
                             ],
                           )),
