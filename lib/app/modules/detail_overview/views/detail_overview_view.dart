@@ -1,8 +1,8 @@
 import 'package:app_lms/theme/theme.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_material_design_icons/flutter_material_design_icons.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:readmore/readmore.dart';
 
 import '../controllers/detail_overview_controller.dart';
@@ -188,7 +188,7 @@ class DetailOverviewView extends GetView<DetailOverviewController> {
                                           child: Row(
                                             children: [
                                               Icon(
-                                                MdiIcons.sale,
+                                                MdiIcons.saleOutline,
                                                 color: kolom,
                                               ),
                                               SizedBox(
@@ -214,15 +214,14 @@ class DetailOverviewView extends GetView<DetailOverviewController> {
 
                       // Lessons Tab
                       Padding(
-                        padding: const EdgeInsets.all(16.0),
-                        child: Column(
-                          children: [
-                            Container(
-                              decoration: ,
-                            )
-                          ],
-                        )
-                      ),
+                          padding: const EdgeInsets.all(16.0),
+                          child: Column(
+                            children: [
+                              Container(
+                                decoration: BoxDecoration(),
+                              )
+                            ],
+                          )),
 
                       // Reviews Tab
                       Padding(

@@ -36,7 +36,7 @@ dependencies:
   google_fonts: ^6.2.1
   google_sign_in: ^7.1.0
   image_picker: ^1.1.2
-  material_design_icons_flutter: ^7.0.7296
+  flutter_material_design_icons: ^1.1.7447
   path: ^1.9.1
   path_provider: ^2.1.5
   readmore: ^3.0.0
