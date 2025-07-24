@@ -53,7 +53,7 @@ class DetailOverviewView extends GetView<DetailOverviewController> {
 
                 // TabBarView
                 SizedBox(
-                  height: 600, // adjust height as needed
+                  height: 470, // adjust height as needed
 
                   child: TabBarView(
                     children: [
@@ -270,6 +270,25 @@ class DetailOverviewView extends GetView<DetailOverviewController> {
                       ),
                     ],
                   ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(20, 0, 20, 5),
+                  child: ElevatedButton(
+                      
+                      style: ElevatedButton.styleFrom(
+                        
+                          backgroundColor: Colors.blue[900],
+                          minimumSize: Size.fromHeight(50),
+                          foregroundColor: white,
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadiusGeometry.all(
+                                  Radius.circular(15)))),
+                      onPressed: () {},
+                      child: Text(
+                        'GET ENROLL',
+                        style: GoogleFonts.plusJakartaSans(
+                            fontSize: 20, fontWeight: FontWeight.w600),
+                      )),
                 )
               ],
             ),
