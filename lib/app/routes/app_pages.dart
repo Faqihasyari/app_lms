@@ -48,7 +48,7 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.HOME,
-      page: () => const HomeView(),
+      page: () => MainPage(),
       binding: HomeBinding(),
     ),
     GetPage(
@@ -63,7 +63,7 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.DETAIL_OVERVIEW,
-      page: () =>  DetailOverviewView(),
+      page: () => DetailOverviewView(),
       binding: DetailOverviewBinding(),
     ),
   ];

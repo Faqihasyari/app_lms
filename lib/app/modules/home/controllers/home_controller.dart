@@ -4,6 +4,7 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 class HomeController extends GetxController {
   RxString fullName = ''.obs;
   var selectedTags = <String>[].obs;
+  RxInt currentIndex = 0.obs;
   RxBool isLoading = false.obs;
   RxList<Map<String, dynamic>> courses = <Map<String, dynamic>>[].obs;
   final SupabaseClient client = Supabase.instance.client;
@@ -22,6 +23,10 @@ class HomeController extends GetxController {
     super.onInit();
     fetchUserName();
     fetchCourses();
+  }
+
+  void changeTabIndex(int index) {
+    currentIndex.value = index;
   }
 
   Future<void> fetchCourses() async {
