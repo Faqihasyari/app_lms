@@ -1,6 +1,7 @@
 import 'package:app_lms/app/routes/app_pages.dart';
 import 'package:app_lms/theme/theme.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_material_design_icons/flutter_material_design_icons.dart';
 
 import 'package:get/get.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
@@ -166,47 +167,50 @@ class MainPage extends StatelessWidget {
     HomePage(),
     Center(child: Text('Course')),
     Center(child: Text('Chat')),
-    Center(child: Text('Profile')),
+    ProfilePage(),
   ];
 
   @override
   Widget build(BuildContext context) {
     return Obx(() => Scaffold(
           backgroundColor: white,
-          appBar: AppBar(
-            backgroundColor: Colors.white,
-            elevation: 0,
-            title: Obx(() => RichText(
-                  text: TextSpan(
-                    text: 'Welcome, ',
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-                    ),
-                    children: [
-                      TextSpan(
-                        text: controller.fullName.value.isEmpty
-                            ? '...'
-                            : controller.fullName.value,
-                        style: TextStyle(
-                          color: Colors.blue.shade800,
+          appBar: controller.currentIndex.value == 0
+              ? AppBar(
+                  backgroundColor: Colors.white,
+                  elevation: 0,
+                  title: Obx(() => RichText(
+                        text: TextSpan(
+                          text: 'Welcome, ',
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                          ),
+                          children: [
+                            TextSpan(
+                              text: controller.fullName.value.isEmpty
+                                  ? '...'
+                                  : controller.fullName.value,
+                              style: TextStyle(
+                                color: Colors.blue.shade800,
+                              ),
+                            ),
+                          ],
                         ),
-                      ),
-                    ],
-                  ),
-                )),
-            actions: [
-              IconButton(
-                onPressed: () {},
-                icon: Icon(Icons.settings, color: Colors.grey.shade400),
-              ),
-              IconButton(
-                onPressed: () {},
-                icon: Icon(Icons.notifications, color: Colors.grey.shade400),
-              ),
-            ],
-          ),
+                      )),
+                  actions: [
+                    IconButton(
+                      onPressed: () {},
+                      icon: Icon(Icons.settings, color: Colors.grey.shade400),
+                    ),
+                    IconButton(
+                      onPressed: () {},
+                      icon: Icon(Icons.notifications,
+                          color: Colors.grey.shade400),
+                    ),
+                  ],
+                )
+              : null,
           body: pages[controller.currentIndex.value],
           bottomNavigationBar: BottomNavigationBar(
             currentIndex: controller.currentIndex.value,
@@ -221,8 +225,8 @@ class MainPage extends StatelessWidget {
                 Icons.home,
                 0,
               ),
-              _buildNavItem(Icons.lightbulb_outline, 1),
-              _buildNavItem(Icons.chat_bubble_outline, 2),
+              _buildNavItem(MdiIcons.headSnowflake, 1),
+              _buildNavItem(MdiIcons.message, 2),
               _buildNavItem(Icons.person_outline, 3),
             ],
           ),
@@ -252,5 +256,30 @@ class MainPage extends StatelessWidget {
       ),
       label: '',
     );
+  }
+}
+
+class ProfilePage extends GetView<HomeController> {
+  const ProfilePage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        backgroundColor: white,
+        appBar: AppBar(backgroundColor: white, title: Text('PROFILE')),
+        body: Column(
+          children: [
+            SizedBox(
+              height: 20,
+            ),
+            Align(
+              alignment: Alignment.center,
+              child: CircleAvatar(
+                radius: 50,
+                backgroundImage: NetworkImage('https://picsum.photos/200/300'),
+              ),
+            )
+          ],
+        ));
   }
 }

@@ -12,6 +12,7 @@ abstract class Routes {
   static const HOME_DOSEN = _Paths.HOME_DOSEN;
   static const ADD_COURSE = _Paths.ADD_COURSE;
   static const DETAIL_OVERVIEW = _Paths.DETAIL_OVERVIEW;
+  static const MY_COURSE = _Paths.MY_COURSE;
 }
 
 abstract class _Paths {
@@ -25,4 +26,5 @@ abstract class _Paths {
   static const HOME_DOSEN = '/home-dosen';
   static const ADD_COURSE = '/add-course';
   static const DETAIL_OVERVIEW = '/detail-overview';
+  static const MY_COURSE = '/my-course';
 }
