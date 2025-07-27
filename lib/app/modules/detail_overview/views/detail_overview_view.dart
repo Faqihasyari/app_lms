@@ -141,7 +141,7 @@ class DetailOverviewView extends GetView<DetailOverviewController> {
                                           child: Row(
                                             children: [
                                               Icon(
-                                                MdiIcons.cart,
+                                                MdiIcons.certificate,
                                                 color: kolom,
                                               ),
                                               SizedBox(
@@ -274,9 +274,7 @@ class DetailOverviewView extends GetView<DetailOverviewController> {
                 Padding(
                   padding: const EdgeInsets.fromLTRB(20, 0, 20, 5),
                   child: ElevatedButton(
-                      
                       style: ElevatedButton.styleFrom(
-                        
                           backgroundColor: Colors.blue[900],
                           minimumSize: Size.fromHeight(50),
                           foregroundColor: white,
