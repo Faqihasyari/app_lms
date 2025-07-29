@@ -273,12 +273,18 @@ class ProfilePage extends GetView<HomeController> {
               height: 20,
             ),
             Align(
-              alignment: Alignment.center,
-              child: CircleAvatar(
-                radius: 50,
-                backgroundImage: NetworkImage('https://picsum.photos/200/300'),
-              ),
-            )
+                alignment: Alignment.center,
+                child: Obx(
+                  () {
+                    final fullName = controller.fullName.value;
+                    final avatarUrl =
+                        'https://ui-avatars.com/api/?name=${Uri.encodeComponent(fullName)}&size=256';
+                    return CircleAvatar(
+                      radius: 50,
+                      backgroundImage: NetworkImage(avatarUrl),
+                    );
+                  },
+                ))
           ],
         ));
   }
