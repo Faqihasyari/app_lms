@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_material_design_icons/flutter_material_design_icons.dart';
 
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 import '../controllers/home_controller.dart';
@@ -269,22 +270,51 @@ class ProfilePage extends GetView<HomeController> {
         appBar: AppBar(backgroundColor: white, title: Text('PROFILE')),
         body: Column(
           children: [
-            SizedBox(
-              height: 20,
+            Stack(
+              children: [
+                SizedBox(
+                  height: 20,
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(top: 70),
+                  child: Container(
+                    margin: EdgeInsets.symmetric(horizontal: 40),
+                    height: 400,
+                    width: 350,
+                    decoration: BoxDecoration(
+                        color: kolom.withOpacity(0.2),
+                        borderRadius: BorderRadius.circular(10)),
+                    child: Column(
+                      children: [
+                        SizedBox(
+                          height: 40,
+                        ),
+                        Obx(() => Text(
+                              controller.fullName.value.isEmpty
+                                  ? 'Loading...'
+                                  : controller.fullName.value,
+                              style: GoogleFonts.plusJakartaSans(
+                                  fontSize: 18, fontWeight: FontWeight.bold),
+                            ))
+                      ],
+                    ),
+                  ),
+                ),
+                Align(
+                    alignment: Alignment.center,
+                    child: Obx(
+                      () {
+                        final fullName = controller.fullName.value;
+                        final avatarUrl =
+                            'https://ui-avatars.com/api/?name=${Uri.encodeComponent(fullName)}&size=256';
+                        return CircleAvatar(
+                          radius: 50,
+                          backgroundImage: NetworkImage(avatarUrl),
+                        );
+                      },
+                    )),
+              ],
             ),
-            Align(
-                alignment: Alignment.center,
-                child: Obx(
-                  () {
-                    final fullName = controller.fullName.value;
-                    final avatarUrl =
-                        'https://ui-avatars.com/api/?name=${Uri.encodeComponent(fullName)}&size=256';
-                    return CircleAvatar(
-                      radius: 50,
-                      backgroundImage: NetworkImage(avatarUrl),
-                    );
-                  },
-                ))
           ],
         ));
   }
