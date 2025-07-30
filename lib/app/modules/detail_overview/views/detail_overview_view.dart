@@ -380,7 +380,6 @@ class DetailOverviewView extends GetView<DetailOverviewController> {
                                   width: Get.width * 0.85,
                                   padding: EdgeInsets.all(16),
                                   decoration: BoxDecoration(
-                                    // ignore: deprecated_member_use
                                     color: kolom.withOpacity(0.25),
                                     borderRadius: BorderRadius.circular(10),
                                   ),
