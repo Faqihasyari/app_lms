@@ -14,7 +14,8 @@ class DetailOverviewView extends GetView<DetailOverviewController> {
 
   @override
   Widget build(BuildContext context) {
-    
+    final skills = course['skills'] as List<dynamic>? ?? [];
+
     return DefaultTabController(
       length: 3,
       child: Scaffold(
@@ -54,7 +55,8 @@ class DetailOverviewView extends GetView<DetailOverviewController> {
 
                 // TabBarView
                 SizedBox(
-                  height: 470, // adjust height as needed
+                  height:
+                      skills.length > 3 ? 475 : 430, // adjust height as needed
 
                   child: TabBarView(
                     children: [
