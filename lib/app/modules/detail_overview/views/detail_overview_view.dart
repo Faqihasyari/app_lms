@@ -347,7 +347,30 @@ class DetailOverviewView extends GetView<DetailOverviewController> {
                                     ))
                                   ],
                                 ),
-                              )
+                              ),
+                              Container(
+                                height: 55,
+                                width: Get.width * 0.85,
+                                margin: EdgeInsets.all(16),
+                                padding: EdgeInsets.all(16),
+                                decoration: BoxDecoration(
+                                  // ignore: deprecated_member_use
+                                  color: kolom.withOpacity(0.25),
+                                  borderRadius: BorderRadius.circular(10),
+                                ),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      'Chapter 2 : What is Logo Designing?',
+                                      textAlign: TextAlign.end,
+                                      style: GoogleFonts.plusJakartaSans(
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    )
+                                  ],
+                                ),
+                              ),
                             ],
                           )),
 
