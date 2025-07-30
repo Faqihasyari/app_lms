@@ -226,7 +226,10 @@ class MainPage extends StatelessWidget {
                 Icons.home,
                 0,
               ),
-              _buildNavItem(MdiIcons.headSnowflake, 1),
+              _buildNavItem(
+                MdiIcons.headSnowflake,
+                1,
+              ),
               _buildNavItem(MdiIcons.message, 2),
               _buildNavItem(Icons.person_outline, 3),
             ],

@@ -2,6 +2,7 @@ import 'package:app_lms/theme/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_material_design_icons/flutter_material_design_icons.dart';
 import 'package:get/get.dart';
+import 'package:get/get_connect/http/src/utils/utils.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:readmore/readmore.dart';
 
@@ -251,13 +252,100 @@ class DetailOverviewView extends GetView<DetailOverviewController> {
                           child: Column(
                             children: [
                               Container(
-                                height: 97,
+                                height: 55,
+                                width: Get.width * 0.85,
                                 margin: EdgeInsets.all(16),
                                 padding: EdgeInsets.all(16),
                                 decoration: BoxDecoration(
                                   // ignore: deprecated_member_use
                                   color: kolom.withOpacity(0.25),
                                   borderRadius: BorderRadius.circular(10),
+                                ),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      'Chapter 1 : What is Graphics Designing?',
+                                      textAlign: TextAlign.end,
+                                      style: GoogleFonts.plusJakartaSans(
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    )
+                                  ],
+                                ),
+                              ),
+                              Container(
+                                padding: EdgeInsets.all(10),
+                                height: Get.height * 0.3,
+                                width: Get.width * 0.85,
+                                decoration: BoxDecoration(
+                                  color: kolom.withOpacity(0.25),
+                                  borderRadius: BorderRadius.circular(10),
+                                ),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Expanded(
+                                        child: Row(
+                                      children: [
+                                        Icon(
+                                          Icons.play_circle,
+                                          size: 35,
+                                          color: btn,
+                                        ),
+                                        SizedBox(
+                                          width: 5,
+                                        ),
+                                        Text(
+                                            'Lorem ipsum dolor sit amet consectetur.'),
+                                      ],
+                                    )),
+                                    Expanded(
+                                        child: Row(
+                                      children: [
+                                        Icon(
+                                          Icons.view_carousel_outlined,
+                                          size: 35,
+                                          color: btn,
+                                        ),
+                                        SizedBox(
+                                          width: 5,
+                                        ),
+                                        Text(
+                                            'Lorem ipsum dolor sit amet consectetur.'),
+                                      ],
+                                    )),
+                                    Expanded(
+                                        child: Row(
+                                      children: [
+                                        Icon(
+                                          Icons.play_circle,
+                                          size: 35,
+                                          color: btn,
+                                        ),
+                                        SizedBox(
+                                          width: 5,
+                                        ),
+                                        Text(
+                                            'Lorem ipsum dolor sit amet consectetur.'),
+                                      ],
+                                    )),
+                                    Expanded(
+                                        child: Row(
+                                      children: [
+                                        Icon(
+                                          Icons.view_carousel_outlined,
+                                          size: 35,
+                                          color: btn,
+                                        ),
+                                        SizedBox(
+                                          width: 5,
+                                        ),
+                                        Text(
+                                            'Lorem ipsum dolor sit amet consectetur.'),
+                                      ],
+                                    ))
+                                  ],
                                 ),
                               )
                             ],
