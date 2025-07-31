@@ -451,7 +451,7 @@ class DetailOverviewView extends GetView<DetailOverviewController> {
                         style: GoogleFonts.plusJakartaSans(
                             fontSize: 20, fontWeight: FontWeight.w600),
                       )),
-                )
+                ),
               ],
             ),
 
