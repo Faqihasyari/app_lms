@@ -6,7 +6,7 @@ class HomeController extends GetxController {
   var selectedTags = <String>[].obs;
   RxInt currentIndex = 0.obs;
   RxBool isLoading = false.obs;
-  var selectedIndex = 0.obs;
+  Rx<Map<String, dynamic>?> selectedCourse = Rx<Map<String, dynamic>?>(null);
   RxList<Map<String, dynamic>> courses = <Map<String, dynamic>>[].obs;
   final SupabaseClient client = Supabase.instance.client;
   final List<String> tags = ['UI/UX', 'Graphics Design', 'Figma'];

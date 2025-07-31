@@ -102,6 +102,7 @@ class HomePage extends GetView<HomeController> {
                     print(course);
                     return GestureDetector(
                       onTap: () {
+                        controller.selectedCourse.value = course;
                         Get.toNamed(Routes.DETAIL_OVERVIEW, arguments: course);
                       },
                       child: Container(
@@ -202,9 +203,8 @@ class MainPage extends StatelessWidget {
                   actions: [
                     IconButton(
                       onPressed: () {
-                        // ignore: invalid_use_of_protected_member
-                        final course = controller.courses.value;
-                        Get.toNamed(Routes.SETTING, arguments: course);
+                        Get.toNamed(Routes.SETTING,
+                            arguments: controller.fullName.value);
                       },
                       icon: Icon(Icons.settings, color: Colors.grey.shade400),
                     ),

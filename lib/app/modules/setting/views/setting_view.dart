@@ -9,7 +9,10 @@ class SettingView extends GetView<SettingController> {
   const SettingView({super.key});
   @override
   Widget build(BuildContext context) {
-    final data = Get.arguments as Map<String, dynamic>? ?? {};
+    final fullName = Get.arguments as String;
+    final avatarUrl =
+        'https://ui-avatars.com/api/?name=${Uri.encodeComponent(fullName)}&size=256';
+
     return Scaffold(
         appBar: AppBar(
           title: const Text(
@@ -32,9 +35,6 @@ class SettingView extends GetView<SettingController> {
                 alignment: Alignment.center,
                 child: Obx(
                   () {
-                    final fullName = data['full_name'] ?? 'User';
-                    final avatarUrl =
-                        'https://ui-avatars.com/api/?name=${Uri.encodeComponent(fullName)}&size=256';
                     return CircleAvatar(
                       radius: 50,
                       backgroundImage: NetworkImage(avatarUrl),
