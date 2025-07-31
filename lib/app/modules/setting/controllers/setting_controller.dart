@@ -1,23 +1,16 @@
 import 'package:get/get.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
 class SettingController extends GetxController {
-  //TODO: Implement SettingController
+  SupabaseClient supa = Supabase.instance.client;
 
-  final count = 0.obs;
-  @override
-  void onInit() {
-    super.onInit();
+  void logout() async {
+    try{
+      await supa.auth.signOut();
+      Get.offAllNamed('/login');
+    } catch (e) {
+      print(e);
+      Get.snackbar("Terjadi Kesalahan", "Tidak bisa logout");
+    }
   }
-
-  @override
-  void onReady() {
-    super.onReady();
-  }
-
-  @override
-  void onClose() {
-    super.onClose();
-  }
-
-  void increment() => count.value++;
 }

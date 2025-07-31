@@ -25,12 +25,11 @@ class SettingView extends GetView<SettingController> {
           ),
         ],
       ),
-      body: const Center(
-        child: Text(
-          'SettingView is working',
-          style: TextStyle(fontSize: 20),
-        ),
-      ),
+      body: Column(
+        children: [
+          
+        ],
+      )
     );
   }
 }
