@@ -13,6 +13,7 @@ class HomePage extends GetView<HomeController> {
   const HomePage({super.key});
   @override
   Widget build(BuildContext context) {
+    
     final controller = Get.find<HomeController>();
 
     return Column(
@@ -202,7 +203,7 @@ class MainPage extends StatelessWidget {
                   actions: [
                     IconButton(
                       onPressed: () {
-                        Get.toNamed(Routes.SETTING);
+                        Get.toNamed(Routes.SETTING, arguments: course);
                       },
                       icon: Icon(Icons.settings, color: Colors.grey.shade400),
                     ),

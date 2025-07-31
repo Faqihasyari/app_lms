@@ -27,7 +27,19 @@ class SettingView extends GetView<SettingController> {
       ),
       body: Column(
         children: [
-          
+          Align(
+                    alignment: Alignment.center,
+                    child: Obx(
+                      () {
+                        final fullName = controller.fullName.value;
+                        final avatarUrl =
+                            'https://ui-avatars.com/api/?name=${Uri.encodeComponent(fullName)}&size=256';
+                        return CircleAvatar(
+                          radius: 50,
+                          backgroundImage: NetworkImage(avatarUrl),
+                        );
+                      },
+                    )),
         ],
       )
     );
