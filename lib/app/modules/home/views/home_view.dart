@@ -201,7 +201,9 @@ class MainPage extends StatelessWidget {
                       )),
                   actions: [
                     IconButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Get.toNamed(Routes.SETTING);
+                      },
                       icon: Icon(Icons.settings, color: Colors.grey.shade400),
                     ),
                     IconButton(
