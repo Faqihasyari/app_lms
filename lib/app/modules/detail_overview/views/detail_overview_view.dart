@@ -447,7 +447,7 @@ class DetailOverviewView extends GetView<DetailOverviewController> {
                                   Radius.circular(15)))),
                       onPressed: () {},
                       child: Text(
-                        'GET ENROLL',
+                        'BUY',
                         style: GoogleFonts.plusJakartaSans(
                             fontSize: 20, fontWeight: FontWeight.w600),
                       )),
