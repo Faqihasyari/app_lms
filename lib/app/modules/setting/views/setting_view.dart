@@ -12,7 +12,7 @@ class SettingView extends GetView<SettingController> {
     final fullName = Get.arguments as String;
     final avatarUrl =
         'https://ui-avatars.com/api/?name=${Uri.encodeComponent(fullName)}&size=256';
-
+        
     return Scaffold(
         appBar: AppBar(
           title: const Text(
@@ -33,13 +33,9 @@ class SettingView extends GetView<SettingController> {
           children: [
             Align(
                 alignment: Alignment.center,
-                child: Obx(
-                  () {
-                    return CircleAvatar(
-                      radius: 50,
-                      backgroundImage: NetworkImage(avatarUrl),
-                    );
-                  },
+                child: CircleAvatar(
+                  radius: 50,
+                  backgroundImage: NetworkImage(avatarUrl),
                 )),
           ],
         ));
