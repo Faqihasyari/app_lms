@@ -9,6 +9,9 @@ class EditProfileView extends GetView<EditProfileController> {
   @override
   Widget build(BuildContext context) {
     final String fullName = Get.arguments ?? ''; // Ambil argument
+
+    final TextEditingController nameController =
+        TextEditingController(text: fullName);
     return Scaffold(
         appBar: AppBar(
           title: const Text('EditProfileView'),
@@ -19,10 +22,10 @@ class EditProfileView extends GetView<EditProfileController> {
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: TextField(
+                controller: nameController,
                 decoration: InputDecoration(
                   labelText: 'Full Name',
                   border: OutlineInputBorder(),
-                  
                 ),
               ),
             )
