@@ -1,6 +1,7 @@
 import 'package:app_lms/app/modules/home/controllers/home_controller.dart';
 import 'package:app_lms/theme/theme.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_material_design_icons/flutter_material_design_icons.dart';
 
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -57,6 +58,91 @@ class SettingView extends GetView<SettingController> {
                               style: GoogleFonts.plusJakartaSans(
                                   fontSize: 18, fontWeight: FontWeight.bold),
                             )),
+                        ListTile(
+                          onTap: () {
+                            controller.logout();
+                            print('Tes');
+                          },
+                          title: Text(
+                            'Edit Profile',
+                            style: GoogleFonts.plusJakartaSans(
+                                fontWeight: FontWeight.w500),
+                          ),
+                          leading: Icon(
+                            Icons.people,
+                            color: kolom,
+                          ),
+                          trailing: Icon(Icons.arrow_circle_right_outlined,
+                              color: kolom),
+                        ),
+                        ListTile(
+                          onTap: () {
+                            controller.logout();
+                            print('Tes');
+                          },
+                          title: Text(
+                            'Payment Option',
+                            style: GoogleFonts.plusJakartaSans(
+                                fontWeight: FontWeight.w500),
+                          ),
+                          leading: Icon(
+                            Icons.card_membership,
+                            color: kolom,
+                          ),
+                          trailing: Icon(Icons.arrow_circle_right_outlined,
+                              color: kolom),
+                        ),
+                        ListTile(
+                          onTap: () {
+                            controller.logout();
+                            print('Tes');
+                          },
+                          title: Text(
+                            'Terms & Conditions',
+                            style: GoogleFonts.plusJakartaSans(
+                                fontWeight: FontWeight.w500),
+                          ),
+                          leading: Icon(
+                            Icons.edit_document,
+                            color: kolom,
+                          ),
+                          trailing: Icon(Icons.arrow_circle_right_outlined,
+                              color: kolom),
+                        ),
+                        ListTile(
+                          onTap: () {
+                            controller.logout();
+                            print('Tes');
+                          },
+                          title: Text(
+                            'Help Center',
+                            style: GoogleFonts.plusJakartaSans(
+                                fontWeight: FontWeight.w500),
+                          ),
+                          leading: Icon(
+                            Icons.headset,
+                            color: kolom,
+                          ),
+                          trailing: Icon(Icons.arrow_circle_right_outlined,
+                              color: kolom),
+                        ),
+                        ListTile(
+                          onTap: () {
+                            controller.logout();
+                            print('Tes');
+                          },
+                          title: Text(
+                            'Invite Friends',
+                            style: GoogleFonts.plusJakartaSans(
+                                fontWeight: FontWeight.w500),
+                          ),
+                          leading: Icon(
+                            MdiIcons.share,
+                            color: kolom,
+                          ),
+                          trailing: Icon(Icons.arrow_circle_right_outlined,
+                              color: kolom),
+                        ),
                         ListTile(
                           onTap: () {
                             controller.logout();
