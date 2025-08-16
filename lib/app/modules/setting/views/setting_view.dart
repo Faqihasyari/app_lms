@@ -61,7 +61,7 @@ class SettingView extends GetView<SettingController> {
                             )),
                         ListTile(
                           onTap: () {
-                            Get.toNamed(Routes.EDIT_PROFILE);
+                            Get.toNamed(Routes.EDIT_PROFILE, arguments: fullName);
                           },
                           title: Text(
                             'Edit Profile',

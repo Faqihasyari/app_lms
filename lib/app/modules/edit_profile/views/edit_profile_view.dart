@@ -9,16 +9,17 @@ class EditProfileView extends GetView<EditProfileController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('EditProfileView'),
-        centerTitle: true,
-      ),
-      body: const Center(
-        child: Text(
-          'EditProfileView is working',
-          style: TextStyle(fontSize: 20),
+        appBar: AppBar(
+          title: const Text('EditProfileView'),
+          centerTitle: true,
         ),
-      ),
-    );
+        body: Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: TextField(),
+            )
+          ],
+        ));
   }
 }
