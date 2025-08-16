@@ -8,6 +8,7 @@ class EditProfileView extends GetView<EditProfileController> {
   const EditProfileView({super.key});
   @override
   Widget build(BuildContext context) {
+    final String fullName = Get.arguments ?? ''; // Ambil argument
     return Scaffold(
         appBar: AppBar(
           title: const Text('EditProfileView'),
@@ -17,7 +18,13 @@ class EditProfileView extends GetView<EditProfileController> {
           children: [
             Padding(
               padding: const EdgeInsets.all(8.0),
-              child: TextField(),
+              child: TextField(
+                decoration: InputDecoration(
+                  labelText: 'Full Name',
+                  border: OutlineInputBorder(),
+                  
+                ),
+              ),
             )
           ],
         ));
