@@ -1,4 +1,5 @@
 import 'package:app_lms/app/modules/home/controllers/home_controller.dart';
+import 'package:app_lms/app/routes/app_pages.dart';
 import 'package:app_lms/theme/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_material_design_icons/flutter_material_design_icons.dart';
@@ -60,8 +61,7 @@ class SettingView extends GetView<SettingController> {
                             )),
                         ListTile(
                           onTap: () {
-                            controller.logout();
-                            print('Tes');
+                            Get.toNamed(Routes.EDIT_PROFILE);
                           },
                           title: Text(
                             'Edit Profile',
