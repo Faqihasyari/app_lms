@@ -30,6 +30,8 @@ class EditProfileView extends GetView<EditProfileController> {
             Padding(
               padding: const EdgeInsets.fromLTRB(20, 20, 20, 0),
               child: TextField(
+                readOnly: true,
+                controller: controller.emailC,
                 decoration: InputDecoration(
                   labelText: 'Email',
                   border: OutlineInputBorder(),
