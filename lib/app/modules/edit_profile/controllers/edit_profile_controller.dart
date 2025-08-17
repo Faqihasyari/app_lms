@@ -8,14 +8,26 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 
 class EditProfileController extends GetxController {
   final TextEditingController emailC = TextEditingController();
-  var avatarUrl = ''.obs;
+  final RxString avatarUrl = ''.obs;
   final supabase = Supabase.instance.client;
+
+  final String fullName;
+  EditProfileController(this.fullName);
+  String get defaultAvatar =>
+      'https://ui-avatars.com/api/?name=${Uri.encodeComponent(fullName)}&size=256';
+
+  String? uploadedFilePath; // simpan path file yg diupload
 
   @override
   void onInit() {
     super.onInit();
 
-    final user = Supabase.instance.client.auth.currentUser;
+    // isi fullname dari argument (atau metadata user)
+    
+
+    avatarUrl.value = defaultAvatar;
+
+    final user = supabase.auth.currentUser;
     if (user != null) {
       emailC.text = user.email ?? '';
     }
@@ -87,17 +99,14 @@ class EditProfileController extends GetxController {
   /// Hapus foto profil (dari storage)
   Future<void> deleteImage() async {
     try {
-      if (avatarUrl.value.isEmpty) {
-        Get.snackbar('Info', 'No profile image to delete');
-        return;
+      if (uploadedFilePath != null) {
+        await supabase.storage
+            .from('profile-image')
+            .remove([uploadedFilePath!]);
+        uploadedFilePath = null;
       }
 
-      // ambil nama file dari url
-      final fileName = avatarUrl.value.split('/').last;
-
-      await supabase.storage.from('profile-image').remove([fileName]);
-
-      avatarUrl.value = '';
+      avatarUrl.value = defaultAvatar; // reset ke default avatar
 
       Get.snackbar('Success', 'Profile image deleted');
     } catch (e) {

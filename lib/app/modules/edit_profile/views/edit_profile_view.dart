@@ -27,10 +27,8 @@ class EditProfileView extends GetView<EditProfileController> {
                   onTap: controller.onAvatarTap,
                   child: Obx(() => CircleAvatar(
                         radius: 50,
-                        backgroundImage: controller.avatarUrl.value.isNotEmpty
-                            ? NetworkImage(controller.avatarUrl.value)
-                            : const AssetImage("assets/images/logo1.png")
-                                as ImageProvider,
+                        backgroundImage:
+                            NetworkImage(controller.avatarUrl.value),
                       )),
                 )),
             Padding(
