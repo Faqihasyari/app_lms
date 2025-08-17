@@ -22,7 +22,6 @@ class EditProfileController extends GetxController {
   void onInit() {
     super.onInit();
 
-    // isi fullname dari argument (atau metadata user)
     
 
     avatarUrl.value = defaultAvatar;
