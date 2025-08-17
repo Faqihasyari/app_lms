@@ -1,10 +1,15 @@
+import 'dart:io';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 class EditProfileController extends GetxController {
   final TextEditingController emailC = TextEditingController();
+  var avatarUrl = ''.obs;
+  final supabase = Supabase.instance.client;
 
   @override
   void onInit() {
@@ -49,14 +54,55 @@ class EditProfileController extends GetxController {
     );
   }
 
-  void pickImage() {
-    // TODO: implementasi ambil foto dari gallery/camera
-    print("Ambil foto baru...");
+  Future<void> pickImage() async {
+    try {
+      final picked = await ImagePicker().pickImage(source: ImageSource.gallery);
+      if (picked == null) return;
+
+      final file = File(picked.path);
+
+      // buat nama file unik (pakai user id + timestamp)
+      final userId = supabase.auth.currentUser?.id;
+      final fileName = '$userId-${DateTime.now().millisecondsSinceEpoch}.jpg';
+
+      // upload ke bucket profile-image
+      await supabase.storage.from('profile-image').upload(
+            fileName,
+            file,
+            fileOptions: const FileOptions(cacheControl: '3600', upsert: true),
+          );
+
+      // ambil public URL dari file
+      final publicUrl =
+          supabase.storage.from('profile-image').getPublicUrl(fileName);
+
+      avatarUrl.value = publicUrl;
+
+      Get.snackbar('Success', 'Profile image updated');
+    } catch (e) {
+      Get.snackbar('Error', e.toString());
+    }
   }
 
-  void deleteImage() {
-    // TODO: implementasi hapus foto profil
-    print("Foto profil dihapus.");
+  /// Hapus foto profil (dari storage)
+  Future<void> deleteImage() async {
+    try {
+      if (avatarUrl.value.isEmpty) {
+        Get.snackbar('Info', 'No profile image to delete');
+        return;
+      }
+
+      // ambil nama file dari url
+      final fileName = avatarUrl.value.split('/').last;
+
+      await supabase.storage.from('profile-image').remove([fileName]);
+
+      avatarUrl.value = '';
+
+      Get.snackbar('Success', 'Profile image deleted');
+    } catch (e) {
+      Get.snackbar('Error', e.toString());
+    }
   }
 
   @override
