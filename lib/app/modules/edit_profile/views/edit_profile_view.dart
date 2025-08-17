@@ -8,7 +8,9 @@ class EditProfileView extends GetView<EditProfileController> {
   const EditProfileView({super.key});
   @override
   Widget build(BuildContext context) {
-    final String fullName = Get.arguments ?? ''; // Ambil argument
+    final String fullName = Get.arguments ?? '';
+    final avatarUrl =
+        'https://ui-avatars.com/api/?name=${Uri.encodeComponent(fullName)}&size=256';
 
     final TextEditingController nameController =
         TextEditingController(text: fullName);
@@ -19,8 +21,23 @@ class EditProfileView extends GetView<EditProfileController> {
         ),
         body: Column(
           children: [
+            Align(
+                alignment: Alignment.center,
+                child: CircleAvatar(
+                  radius: 50,
+                  backgroundImage: NetworkImage(avatarUrl),
+                )),
             Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding: const EdgeInsets.fromLTRB(20, 20, 20, 0),
+              child: TextField(
+                decoration: InputDecoration(
+                  labelText: 'Email',
+                  border: OutlineInputBorder(),
+                ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(20.0),
               child: TextField(
                 controller: nameController,
                 decoration: InputDecoration(
