@@ -29,9 +29,9 @@ class EditProfileController extends GetxController {
       // ambil data profil dari tabel profile (misalnya "profiles")
       final response = await supabase
           .from('profile')
-          .select()
+          .select('id, full_name')
           .eq('id', user.id)
-          .maybeSingle();
+          .single();
 
       if (response != null) {
         nameC.text = response['full_name'] ?? '';

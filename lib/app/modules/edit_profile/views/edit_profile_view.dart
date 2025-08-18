@@ -54,7 +54,9 @@ class EditProfileView extends GetView<EditProfileController> {
                 ),
               ),
               ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    controller.updateProfile();
+                  },
                   style: ElevatedButton.styleFrom(
                     elevation: 5,
                     backgroundColor: kolom,
