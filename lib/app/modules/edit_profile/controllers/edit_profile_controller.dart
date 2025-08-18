@@ -17,10 +17,15 @@ class EditProfileController extends GetxController {
   @override
   void onInit() {
     super.onInit();
-
+    _loadUserData();
   }
 
-  
+  Future<void> _loadUserData() async {
+    final user = supabase.auth.currentUser;
+    if (user != null) {
+      emailC.text = user.email ?? '';
+    }
+  }
 
   // Fungsi saat avatar ditekan
   void onAvatarTap() {
@@ -86,12 +91,12 @@ class EditProfileController extends GetxController {
   }
 
   ImageProvider get currentAvatar {
-  if (avatarUrl.isEmpty) {
-    return const AssetImage('assets/images/blank_user.jpg');
-  } else {
-    return NetworkImage(avatarUrl.value);
+    if (avatarUrl.isEmpty) {
+      return const AssetImage('assets/images/blank_user.jpg');
+    } else {
+      return NetworkImage(avatarUrl.value);
+    }
   }
-}
 
   /// Hapus foto profil (dari storage)
   Future<void> deleteImage() async {
