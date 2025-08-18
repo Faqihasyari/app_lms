@@ -9,26 +9,51 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 class EditProfileController extends GetxController {
   final TextEditingController emailC = TextEditingController();
   final RxString avatarUrl = ''.obs;
+  final RxString fullName = ''.obs;
   final supabase = Supabase.instance.client;
+  
 
-  final String fullName;
-  EditProfileController(this.fullName);
   String get defaultAvatar =>
-      'https://ui-avatars.com/api/?name=${Uri.encodeComponent(fullName)}&size=256';
+      'https://ui-avatars.com/api/?name=${Uri.encodeComponent(fullName.value)}&size=256';
 
   String? uploadedFilePath; // simpan path file yg diupload
 
   @override
   void onInit() {
     super.onInit();
-
     
 
-    avatarUrl.value = defaultAvatar;
+    _loadUserData();
+  }
 
+  Future<void> _loadUserData() async {
     final user = supabase.auth.currentUser;
     if (user != null) {
       emailC.text = user.email ?? '';
+
+      try {
+        // ambil dari tabel profile sesuai user.id
+        final response = await supabase
+            .from('profile')
+            .select('full_name, avatar_url')
+            .eq('id', user.id)
+            .maybeSingle();
+
+        if (response != null) {
+          fullName.value = response['full_name'] ?? 'User';
+          avatarUrl.value = response['avatar_url'] ?? defaultAvatar;
+        } else {
+          fullName.value = 'User';
+          avatarUrl.value = defaultAvatar;
+        }
+      } catch (e) {
+        print("Error ambil data profile: $e");
+        fullName.value = 'User';
+        avatarUrl.value = defaultAvatar;
+      }
+    } else {
+      fullName.value = 'User';
+      avatarUrl.value = defaultAvatar;
     }
   }
 

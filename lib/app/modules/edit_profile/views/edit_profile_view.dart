@@ -25,11 +25,15 @@ class EditProfileView extends GetView<EditProfileController> {
                 alignment: Alignment.center,
                 child: GestureDetector(
                   onTap: controller.onAvatarTap,
-                  child: Obx(() => CircleAvatar(
-                        radius: 50,
-                        backgroundImage:
-                            NetworkImage(controller.avatarUrl.value),
-                      )),
+                  child: Obx(() {
+                    final imageUrl = controller.avatarUrl.value.isEmpty
+                        ? controller.defaultAvatar
+                        : controller.avatarUrl.value;
+                    return CircleAvatar(
+                      radius: 50,
+                      backgroundImage: NetworkImage(imageUrl),
+                    );
+                  }),
                 )),
             Padding(
               padding: const EdgeInsets.fromLTRB(20, 20, 20, 0),
