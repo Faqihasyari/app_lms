@@ -9,8 +9,6 @@ class EditProfileView extends GetView<EditProfileController> {
   @override
   Widget build(BuildContext context) {
     final String fullName = Get.arguments ?? '';
-    final avatarUrl =
-        'https://ui-avatars.com/api/?name=${Uri.encodeComponent(fullName)}&size=256';
 
     final TextEditingController nameController =
         TextEditingController(text: fullName);
@@ -26,12 +24,9 @@ class EditProfileView extends GetView<EditProfileController> {
                 child: GestureDetector(
                   onTap: controller.onAvatarTap,
                   child: Obx(() {
-                    final imageUrl = controller.avatarUrl.value.isEmpty
-                        ? controller.defaultAvatar
-                        : controller.avatarUrl.value;
                     return CircleAvatar(
                       radius: 50,
-                      backgroundImage: NetworkImage(imageUrl),
+                      backgroundImage: controller.currentAvatar,
                     );
                   }),
                 )),
