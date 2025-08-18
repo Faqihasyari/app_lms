@@ -8,6 +8,7 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 
 class EditProfileController extends GetxController {
   final TextEditingController emailC = TextEditingController();
+  final TextEditingController nameC = TextEditingController();
   final RxString avatarUrl = ''.obs;
   final RxString fullName = ''.obs;
   final supabase = Supabase.instance.client;
@@ -24,6 +25,35 @@ class EditProfileController extends GetxController {
     final user = supabase.auth.currentUser;
     if (user != null) {
       emailC.text = user.email ?? '';
+
+      // ambil data profil dari tabel profile (misalnya "profiles")
+      final response = await supabase
+          .from('profile')
+          .select()
+          .eq('id', user.id)
+          .maybeSingle();
+
+      if (response != null) {
+        nameC.text = response['full_name'] ?? '';
+        fullName.value = response['full_name'] ?? '';
+      }
+    }
+  }
+
+  Future<void> updateProfile() async {
+    try {
+      final user = supabase.auth.currentUser;
+      if (user == null) return;
+
+      await supabase.from('profiles').update({
+        'full_name': nameC.text,
+      }).eq('id', user.id);
+
+      fullName.value = nameC.text;
+
+      Get.snackbar('Success', 'Profile updated');
+    } catch (e) {
+      Get.snackbar('Error', e.toString());
     }
   }
 
@@ -118,6 +148,7 @@ class EditProfileController extends GetxController {
 
   @override
   void onClose() {
+    nameC.dispose();
     emailC.dispose();
     super.onClose();
   }
