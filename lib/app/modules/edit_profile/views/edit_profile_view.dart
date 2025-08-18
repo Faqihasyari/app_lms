@@ -1,3 +1,4 @@
+import 'package:app_lms/theme/theme.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
@@ -50,7 +51,15 @@ class EditProfileView extends GetView<EditProfileController> {
                   border: OutlineInputBorder(),
                 ),
               ),
-            )
+            ),
+            ElevatedButton(
+                onPressed: () {},
+                style: ElevatedButton.styleFrom(
+                  elevation: 5,
+                  backgroundColor: kolom,
+                  foregroundColor: white,
+                ),
+                child: Text('EDIT PROFILE'))
           ],
         ));
   }
