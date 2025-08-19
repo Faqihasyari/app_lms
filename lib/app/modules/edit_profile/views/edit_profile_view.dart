@@ -11,8 +11,6 @@ class EditProfileView extends GetView<EditProfileController> {
   Widget build(BuildContext context) {
     final String fullName = Get.arguments ?? '';
 
-    final TextEditingController nameController =
-        TextEditingController(text: fullName);
     return Scaffold(
         appBar: AppBar(
           title: const Text('EditProfileView'),
@@ -46,7 +44,7 @@ class EditProfileView extends GetView<EditProfileController> {
               Padding(
                 padding: const EdgeInsets.all(20.0),
                 child: TextField(
-                  controller: nameController,
+                  controller: controller.nameC,
                   decoration: InputDecoration(
                     labelText: 'Full Name',
                     border: OutlineInputBorder(),
