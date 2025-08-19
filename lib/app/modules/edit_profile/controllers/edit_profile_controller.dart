@@ -26,15 +26,16 @@ class EditProfileController extends GetxController {
     if (user != null) {
       emailC.text = user.email ?? '';
 
-      final response = await supabase
+      // Cari profile berdasarkan email (bukan id UUID Auth)
+      final profile = await supabase
           .from('profile')
           .select('id, full_name')
-          .eq('id', user.id)
-          .single();
+          .eq('email', user.email!)
+          .maybeSingle();
 
-      if (response != null) {
-        nameC.text = response['full_name'] ?? '';
-        fullName.value = response['full_name'] ?? '';
+      if (profile != null) {
+        nameC.text = profile['full_name'] ?? '';
+        fullName.value = profile['full_name'] ?? '';
       }
     }
   }
@@ -44,11 +45,35 @@ class EditProfileController extends GetxController {
       final user = supabase.auth.currentUser;
       if (user == null) return;
 
-      await supabase.from('profiles').update({
-        'full_name': nameC.text,
-      }).eq('id', user.id);
+      // Ambil dulu id dari tabel profile berdasarkan email
+      final profile = await supabase
+          .from('profile')
+          .select('id')
+          .eq('email', user.email!)
+          .maybeSingle();
 
-      fullName.value = nameC.text;
+      if (profile == null) {
+        Get.snackbar('Error', 'Profile not found for ${user.email}');
+        return;
+      }
+
+      final profileId = profile['id'];
+
+      // Update berdasarkan profile.id
+      final response = await supabase
+          .from('profile')
+          .update({
+            'full_name': nameC.text,
+          })
+          .eq('id', profileId)
+          .select();
+
+      if (response == null || response.isEmpty) {
+        Get.snackbar('Error', 'Gagal update profile (row tidak ditemukan)');
+        return;
+      }
+
+      print("Updated profile: $response");
 
       Get.snackbar('Success', 'Profile updated');
     } catch (e) {
