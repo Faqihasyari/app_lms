@@ -11,29 +11,55 @@ class NotificationView extends GetView<NotificationController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text(
-          'Notifications',
+        appBar: AppBar(
+          title: const Text(
+            'Notifications',
+          ),
+          actions: [
+            IconButton(
+              onPressed: () {
+                Get.toNamed(Routes.NOTIFICATION);
+              },
+              icon: Icon(Icons.settings, color: Colors.grey.shade400),
+            ),
+            IconButton(
+              onPressed: () {},
+              icon: Icon(Icons.notifications, color: btn),
+            ),
+          ],
         ),
-        actions: [
-          IconButton(
-            onPressed: () {
-              Get.toNamed(Routes.NOTIFICATION);
-            },
-            icon: Icon(Icons.settings, color: Colors.grey.shade400),
-          ),
-          IconButton(
-            onPressed: () {},
-            icon: Icon(Icons.notifications, color: btn),
-          ),
-        ],
-      ),
-      body: const Center(
-        child: Text(
-          'NotificationView is working',
-          style: TextStyle(fontSize: 20),
+        body: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: containers(),
+        ));
+  }
+}
+
+List<Widget> containers() => List.generate(
+      4,
+      (index) => Container(
+        margin: ,
+        width: Get.width * 0.8,
+        height: Get.height * 0.1,
+        decoration: BoxDecoration(
+          color: kolom.withOpacity(0.2),
+          borderRadius: BorderRadius.circular(10),
+        ),
+        child: Column(
+          children: [
+            Row(
+              children: [
+                Icon(Icons.done_rounded),
+                Column(
+                  children: [
+                    Text('Transaction Successfully!'),
+                    Text('Lorem ipsum dolor sit amet consectetur.')
+                  ],
+                ),
+                Expanded(child: Text('5 mins ago'))
+              ],
+            ),
+          ],
         ),
       ),
     );
-  }
-}
