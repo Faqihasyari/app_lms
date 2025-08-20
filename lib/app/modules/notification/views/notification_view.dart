@@ -3,6 +3,7 @@ import 'package:app_lms/theme/theme.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import '../controllers/notification_controller.dart';
 
@@ -38,27 +39,29 @@ class NotificationView extends GetView<NotificationController> {
 List<Widget> containers() => List.generate(
       4,
       (index) => Container(
-        margin: ,
+        margin: EdgeInsets.fromLTRB(20, 10, 20, 5),
         width: Get.width * 0.8,
         height: Get.height * 0.1,
         decoration: BoxDecoration(
           color: kolom.withOpacity(0.2),
           borderRadius: BorderRadius.circular(10),
         ),
-        child: Column(
+        child: Row(
           children: [
-            Row(
+            Icon(Icons.done_rounded),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Icon(Icons.done_rounded),
-                Column(
-                  children: [
-                    Text('Transaction Successfully!'),
-                    Text('Lorem ipsum dolor sit amet consectetur.')
-                  ],
+                Text(
+                  'Transaction Successfully!',
+                  style:
+                      GoogleFonts.plusJakartaSans(fontWeight: FontWeight.w600),
                 ),
-                Expanded(child: Text('5 mins ago'))
+                Text('Lorem ipsum dolor sit amet consectetur.', )
               ],
             ),
+            Expanded(child: Text('5 mins ago'))
           ],
         ),
       ),
