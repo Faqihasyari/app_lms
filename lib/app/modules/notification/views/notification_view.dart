@@ -39,30 +39,50 @@ class NotificationView extends GetView<NotificationController> {
 List<Widget> containers() => List.generate(
       4,
       (index) => Container(
-        margin: EdgeInsets.fromLTRB(20, 10, 20, 5),
+        margin: EdgeInsets.fromLTRB(10, 10, 10, 5),
         width: Get.width * 0.8,
-        height: Get.height * 0.1,
+        height: Get.height * 0.12,
         decoration: BoxDecoration(
-          color: kolom.withOpacity(0.2),
-          borderRadius: BorderRadius.circular(10),
-        ),
-        child: Row(
-          children: [
-            Icon(Icons.done_rounded),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(
-                  'Transaction Successfully!',
-                  style:
-                      GoogleFonts.plusJakartaSans(fontWeight: FontWeight.w600),
-                ),
-                Text('Lorem ipsum dolor sit amet consectetur.', )
-              ],
-            ),
-            Expanded(child: Text('5 mins ago'))
-          ],
+            color: kolom.withOpacity(0.2),
+            borderRadius: BorderRadius.circular(10),
+            border: Border.all(color: ring, style: BorderStyle.solid)),
+        child: Padding(
+          padding: const EdgeInsets.all(15.0),
+          child: Row(
+            children: [
+              Icon(Icons.done_rounded),
+              SizedBox(
+                width: 10,
+              ),
+              Column(
+                spacing: 5,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    'Transaction Successfully!',
+                    style: GoogleFonts.plusJakartaSans(
+                        fontWeight: FontWeight.w600),
+                  ),
+                  Row(
+                    spacing: 70,
+                    children: [
+                      Text(
+                        'Lorem ipsum dolor sit amet consectetur.',
+                        style: GoogleFonts.plusJakartaSans(
+                            fontSize: 10, fontWeight: FontWeight.w300),
+                      ),
+                      Text(
+                        '5 mins ago',
+                        style: GoogleFonts.plusJakartaSans(
+                            fontSize: 10, fontWeight: FontWeight.w300),
+                      )
+                    ],
+                  )
+                ],
+              ),
+            ],
+          ),
         ),
       ),
     );
