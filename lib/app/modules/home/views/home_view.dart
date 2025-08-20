@@ -1,3 +1,4 @@
+import 'package:app_lms/app/modules/edit_profile/controllers/edit_profile_controller.dart';
 import 'package:app_lms/app/routes/app_pages.dart';
 import 'package:app_lms/theme/theme.dart';
 import 'package:flutter/material.dart';
@@ -203,8 +204,9 @@ class MainPage extends StatelessWidget {
                   actions: [
                     IconButton(
                       onPressed: () {
-                        Get.toNamed(Routes.SETTING,
-                            );
+                        Get.toNamed(
+                          Routes.SETTING,
+                        );
                       },
                       icon: Icon(Icons.settings, color: Colors.grey.shade400),
                     ),
@@ -270,7 +272,8 @@ class MainPage extends StatelessWidget {
 }
 
 class ProfilePage extends GetView<HomeController> {
-  const ProfilePage({super.key});
+  ProfilePage({super.key});
+  final settingController = Get.put(EditProfileController());
 
   @override
   Widget build(BuildContext context) {
@@ -299,12 +302,12 @@ class ProfilePage extends GetView<HomeController> {
                           height: 40,
                         ),
                         Obx(() => Text(
-                              controller.fullName.value.isEmpty
+                              settingController.fullName.value.isEmpty
                                   ? 'Loading...'
-                                  : controller.fullName.value,
+                                  : settingController.fullName.value,
                               style: GoogleFonts.plusJakartaSans(
                                   fontSize: 18, fontWeight: FontWeight.bold),
-                            ))
+                            )),
                       ],
                     ),
                   ),
@@ -313,12 +316,9 @@ class ProfilePage extends GetView<HomeController> {
                     alignment: Alignment.center,
                     child: Obx(
                       () {
-                        final fullName = controller.fullName.value;
-                        final avatarUrl =
-                            'https://ui-avatars.com/api/?name=${Uri.encodeComponent(fullName)}&size=256';
                         return CircleAvatar(
                           radius: 50,
-                          backgroundImage: NetworkImage(avatarUrl),
+                          backgroundImage: settingController.currentAvatar,
                         );
                       },
                     )),
