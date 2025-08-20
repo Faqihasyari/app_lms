@@ -204,12 +204,14 @@ class MainPage extends StatelessWidget {
                     IconButton(
                       onPressed: () {
                         Get.toNamed(Routes.SETTING,
-                            arguments: controller.fullName.value);
+                            );
                       },
                       icon: Icon(Icons.settings, color: Colors.grey.shade400),
                     ),
                     IconButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Get.toNamed(Routes.NOTIFICATION);
+                      },
                       icon: Icon(Icons.notifications,
                           color: Colors.grey.shade400),
                     ),

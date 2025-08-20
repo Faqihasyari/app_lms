@@ -1,4 +1,4 @@
-import 'package:app_lms/app/modules/home/controllers/home_controller.dart';
+import 'package:app_lms/app/modules/edit_profile/controllers/edit_profile_controller.dart';
 import 'package:app_lms/app/routes/app_pages.dart';
 import 'package:app_lms/theme/theme.dart';
 import 'package:flutter/material.dart';
@@ -13,10 +13,7 @@ class SettingView extends GetView<SettingController> {
   const SettingView({super.key});
   @override
   Widget build(BuildContext context) {
-    final homeController = Get.find<HomeController>();
-    final fullName = Get.arguments as String;
-    final avatarUrl =
-        'https://ui-avatars.com/api/?name=${Uri.encodeComponent(fullName)}&size=256';
+    final homeController = Get.put(EditProfileController());
 
     return Scaffold(
         appBar: AppBar(
@@ -29,7 +26,9 @@ class SettingView extends GetView<SettingController> {
               icon: Icon(Icons.settings, color: btn),
             ),
             IconButton(
-              onPressed: () {},
+              onPressed: () {
+                Get.toNamed(Routes.NOTIFICATION);
+              },
               icon: Icon(Icons.notifications, color: Colors.grey.shade400),
             ),
           ],
@@ -61,7 +60,9 @@ class SettingView extends GetView<SettingController> {
                             )),
                         ListTile(
                           onTap: () {
-                            Get.toNamed(Routes.EDIT_PROFILE, arguments: fullName);
+                            Get.toNamed(
+                              Routes.EDIT_PROFILE,
+                            );
                           },
                           title: Text(
                             'Edit Profile',
@@ -166,9 +167,11 @@ class SettingView extends GetView<SettingController> {
                 ),
                 Align(
                     alignment: Alignment.center,
-                    child: CircleAvatar(
-                      radius: 50,
-                      backgroundImage: NetworkImage(avatarUrl),
+                    child: Obx(
+                      () => CircleAvatar(
+                        radius: 50,
+                        backgroundImage: homeController.currentAvatar,
+                      ),
                     )),
               ],
             ),

@@ -1,3 +1,5 @@
+import 'package:app_lms/app/routes/app_pages.dart';
+import 'package:app_lms/theme/theme.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
@@ -10,8 +12,21 @@ class NotificationView extends GetView<NotificationController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('NotificationView'),
-        centerTitle: true,
+        title: const Text(
+          'Notifications',
+        ),
+        actions: [
+          IconButton(
+            onPressed: () {
+              Get.toNamed(Routes.NOTIFICATION);
+            },
+            icon: Icon(Icons.settings, color: Colors.grey.shade400),
+          ),
+          IconButton(
+            onPressed: () {},
+            icon: Icon(Icons.notifications, color: btn),
+          ),
+        ],
       ),
       body: const Center(
         child: Text(

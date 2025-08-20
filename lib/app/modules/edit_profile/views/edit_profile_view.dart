@@ -9,7 +9,6 @@ class EditProfileView extends GetView<EditProfileController> {
   const EditProfileView({super.key});
   @override
   Widget build(BuildContext context) {
-    final String fullName = Get.arguments ?? '';
 
     return Scaffold(
         appBar: AppBar(
