@@ -50,7 +50,11 @@ List<Widget> containers() => List.generate(
           padding: const EdgeInsets.all(15.0),
           child: Row(
             children: [
-              Icon(Icons.done_rounded),
+              Icon(
+                Icons.check_circle,
+                color: btn,
+                size: 40,
+              ),
               SizedBox(
                 width: 10,
               ),
@@ -65,7 +69,7 @@ List<Widget> containers() => List.generate(
                         fontWeight: FontWeight.w600),
                   ),
                   Row(
-                    spacing: 70,
+                    spacing: 50,
                     children: [
                       Text(
                         'Lorem ipsum dolor sit amet consectetur.',
