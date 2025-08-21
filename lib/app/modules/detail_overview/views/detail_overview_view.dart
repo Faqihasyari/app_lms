@@ -1,3 +1,4 @@
+import 'package:app_lms/app/routes/app_pages.dart';
 import 'package:app_lms/theme/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_material_design_icons/flutter_material_design_icons.dart';
@@ -445,7 +446,9 @@ class DetailOverviewView extends GetView<DetailOverviewController> {
                           shape: RoundedRectangleBorder(
                               borderRadius: BorderRadiusGeometry.all(
                                   Radius.circular(15)))),
-                      onPressed: () {},
+                      onPressed: () {
+                        Get.toNamed(Routes.PAYMENT);
+                      },
                       child: Text(
                         'BUY',
                         style: GoogleFonts.plusJakartaSans(
