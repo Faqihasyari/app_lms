@@ -14,6 +14,8 @@ import '../modules/home_dosen/bindings/home_dosen_binding.dart';
 import '../modules/home_dosen/views/home_dosen_view.dart';
 import '../modules/notification/bindings/notification_binding.dart';
 import '../modules/notification/views/notification_view.dart';
+import '../modules/payment/bindings/payment_binding.dart';
+import '../modules/payment/views/payment_view.dart';
 import '../modules/setting/bindings/setting_binding.dart';
 import '../modules/setting/views/setting_view.dart';
 import '../modules/signin/bindings/signin_binding.dart';
@@ -93,6 +95,11 @@ class AppPages {
       name: _Paths.NOTIFICATION,
       page: () => const NotificationView(),
       binding: NotificationBinding(),
+    ),
+    GetPage(
+      name: _Paths.PAYMENT,
+      page: () => const PaymentView(),
+      binding: PaymentBinding(),
     ),
   ];
 }

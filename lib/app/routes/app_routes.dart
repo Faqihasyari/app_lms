@@ -16,6 +16,7 @@ abstract class Routes {
   static const SETTING = _Paths.SETTING;
   static const EDIT_PROFILE = _Paths.EDIT_PROFILE;
   static const NOTIFICATION = _Paths.NOTIFICATION;
+  static const PAYMENT = _Paths.PAYMENT;
 }
 
 abstract class _Paths {
@@ -33,4 +34,5 @@ abstract class _Paths {
   static const SETTING = '/setting';
   static const EDIT_PROFILE = '/edit-profile';
   static const NOTIFICATION = '/notification';
+  static const PAYMENT = '/payment';
 }
