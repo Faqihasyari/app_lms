@@ -2,6 +2,7 @@ import 'package:app_lms/theme/theme.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import '../controllers/payment_controller.dart';
 
@@ -26,6 +27,45 @@ class PaymentView extends GetView<PaymentController> {
                   color: kolom.withOpacity(0.3),
                   border: Border.all(width: 1, color: ring),
                   borderRadius: BorderRadius.circular(10),
+                ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        CircleAvatar(
+                          radius: 25,
+                          backgroundColor: kolom,
+                          child: Text(
+                            '1',
+                            style: GoogleFonts.plusJakartaSans(
+                                color: white,
+                                fontWeight: FontWeight.w600,
+                                fontSize: 16),
+                          ),
+                        ),
+                        Text('Overview')
+                      ],
+                    ), 
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        CircleAvatar(
+                          radius: 25,
+                          backgroundColor: kolom,
+                          child: Text(
+                            '2',
+                            style: GoogleFonts.plusJakartaSans(
+                                color: white,
+                                fontWeight: FontWeight.w600,
+                                fontSize: 16),
+                          ),
+                        ),
+                        Text('Overview')
+                      ],
+                    )
+                  ],
                 ),
               ),
             )
