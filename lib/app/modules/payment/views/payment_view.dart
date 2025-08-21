@@ -29,6 +29,7 @@ class PaymentView extends GetView<PaymentController> {
                   borderRadius: BorderRadius.circular(10),
                 ),
                 child: Row(
+                  spacing: 15,
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Column(
@@ -47,7 +48,7 @@ class PaymentView extends GetView<PaymentController> {
                         ),
                         Text('Overview')
                       ],
-                    ), 
+                    ),
                     Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
@@ -62,7 +63,24 @@ class PaymentView extends GetView<PaymentController> {
                                 fontSize: 16),
                           ),
                         ),
-                        Text('Overview')
+                        Text('Payment Method')
+                      ],
+                    ),
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        CircleAvatar(
+                          radius: 25,
+                          backgroundColor: kolom,
+                          child: Text(
+                            '3',
+                            style: GoogleFonts.plusJakartaSans(
+                                color: white,
+                                fontWeight: FontWeight.w600,
+                                fontSize: 16),
+                          ),
+                        ),
+                        Text('Confirmation')
                       ],
                     )
                   ],
