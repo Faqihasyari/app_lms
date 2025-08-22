@@ -17,51 +17,66 @@ class PaymentView extends GetView<PaymentController> {
         return Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: List.generate(steps.length, (index) {
-                bool isActive = controller.currentStep.value == index;
+            Container(
+              height: 88,
+              width: 352,
+              decoration: BoxDecoration(
+                color: kolom.withOpacity(0.3),
+                border: Border.all(width: 1, color: ring),
+                borderRadius: BorderRadius.circular(10),
+              ),
+              child: Column(
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: List.generate(steps.length, (index) {
+                      bool isActive = controller.currentStep.value == index;
 
-                return Row(
-                  children: [
-                    CircleAvatar(
-                      radius: 18,
-                      backgroundColor: isActive ? Colors.blue : Colors.black,
-                      child: Text(
-                        "${index + 1}",
-                        style: const TextStyle(color: Colors.white),
-                      ),
-                    ),
-                    if (index < steps.length - 1)
-                      Container(
-                        width: 40,
-                        height: 2,
-                        color: Colors.grey,
-                      )
-                  ],
-                );
-              }),
+                      return Row(
+                        children: [
+                          CircleAvatar(
+                            radius: 18,
+                            backgroundColor:
+                                isActive ? Colors.blue : Colors.black,
+                            child: Text(
+                              "${index + 1}",
+                              style: const TextStyle(color: Colors.white),
+                            ),
+                          ),
+                          if (index < steps.length - 1)
+                            Container(
+                              width: 40,
+                              height: 2,
+                              color: Colors.grey,
+                            )
+                        ],
+                      );
+                    }),
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: List.generate(steps.length, (index) {
+                      bool isActive = controller.currentStep.value == index;
+                      return SizedBox(
+                        width: 90,
+                        child: Text(
+                          steps[index],
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            fontWeight:
+                                isActive ? FontWeight.bold : FontWeight.normal,
+                            color: isActive ? Colors.blue : Colors.black,
+                          ),
+                        ),
+                      );
+                    }),
+                  ),
+                ],
+              ),
             ),
             const SizedBox(height: 10),
             // label teks di bawah step
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: List.generate(steps.length, (index) {
-                bool isActive = controller.currentStep.value == index;
-                return SizedBox(
-                  width: 90,
-                  child: Text(
-                    steps[index],
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontWeight:
-                          isActive ? FontWeight.bold : FontWeight.normal,
-                      color: isActive ? Colors.blue : Colors.black,
-                    ),
-                  ),
-                );
-              }),
-            ),
+
             const SizedBox(height: 30),
             // Tombol kontrol step
             Row(
