@@ -1,23 +1,21 @@
 import 'package:get/get.dart';
 
 class PaymentController extends GetxController {
-  //TODO: Implement PaymentController
+  var currentStep = 0.obs;
 
-  final count = 0.obs;
-  @override
-  void onInit() {
-    super.onInit();
+  void nextStep() {
+    if (currentStep < 2) {
+      currentStep++;
+    }
   }
 
-  @override
-  void onReady() {
-    super.onReady();
+  void previousStep() {
+    if (currentStep > 0) {
+      currentStep--;
+    }
   }
 
-  @override
-  void onClose() {
-    super.onClose();
-  }
-
-  void increment() => count.value++;
+  void goToStep(int step) {
+    currentStep.value = step;
+  } 
 }

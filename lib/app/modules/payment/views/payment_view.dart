@@ -7,104 +7,80 @@ import 'package:google_fonts/google_fonts.dart';
 import '../controllers/payment_controller.dart';
 
 class PaymentView extends GetView<PaymentController> {
-  const PaymentView({super.key});
+  PaymentView({super.key});
+  final List<String> steps = ["Overview", "Payment Method", "Confirmation"];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: const Text('PaymentView'),
-          centerTitle: true,
-        ),
-        body: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
+      body: Obx(() {
+        return Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-              child: Container(
-                height: 88,
-                width: 352,
-                decoration: BoxDecoration(
-                  color: kolom.withOpacity(0.3),
-                  border: Border.all(width: 1, color: ring),
-                  borderRadius: BorderRadius.circular(10),
-                ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: List.generate(steps.length, (index) {
+                bool isActive = controller.currentStep.value == index;
+
+                return Row(
                   children: [
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Row(
-                          children: [
-                            CircleAvatar(
-                              radius: 25,
-                              backgroundColor: kolom,
-                              child: Text(
-                                '1',
-                                style: GoogleFonts.plusJakartaSans(
-                                    color: white,
-                                    fontWeight: FontWeight.w600,
-                                    fontSize: 16),
-                              ),
-                            ),
-                            Container(
-                              width: 20,
-                              height: 1,
-                              color: Colors.black,
-                            ),
-                          ],
-                        ),
-                        Text('Overview')
-                      ],
+                    CircleAvatar(
+                      radius: 18,
+                      backgroundColor: isActive ? Colors.blue : Colors.black,
+                      child: Text(
+                        "${index + 1}",
+                        style: const TextStyle(color: Colors.white),
+                      ),
                     ),
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Row(
-                          children: [
-                            Container(
-                              width: 20,
-                              height: 1,
-                              color: Colors.black,
-                            ),
-                            CircleAvatar(
-                              radius: 25,
-                              backgroundColor: kolom,
-                              child: Text(
-                                '2',
-                                style: GoogleFonts.plusJakartaSans(
-                                    color: white,
-                                    fontWeight: FontWeight.w600,
-                                    fontSize: 16),
-                              ),
-                            ),
-                          ],
-                        ),
-                        Text('Payment Method')
-                      ],
-                    ),
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        CircleAvatar(
-                          radius: 25,
-                          backgroundColor: kolom,
-                          child: Text(
-                            '3',
-                            style: GoogleFonts.plusJakartaSans(
-                                color: white,
-                                fontWeight: FontWeight.w600,
-                                fontSize: 16),
-                          ),
-                        ),
-                        Text('Confirmation')
-                      ],
-                    )
+                    if (index < steps.length - 1)
+                      Container(
+                        width: 40,
+                        height: 2,
+                        color: Colors.grey,
+                      )
                   ],
+                );
+              }),
+            ),
+            const SizedBox(height: 10),
+            // label teks di bawah step
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: List.generate(steps.length, (index) {
+                bool isActive = controller.currentStep.value == index;
+                return SizedBox(
+                  width: 90,
+                  child: Text(
+                    steps[index],
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      fontWeight:
+                          isActive ? FontWeight.bold : FontWeight.normal,
+                      color: isActive ? Colors.blue : Colors.black,
+                    ),
+                  ),
+                );
+              }),
+            ),
+            const SizedBox(height: 30),
+            // Tombol kontrol step
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                ElevatedButton(
+                  onPressed: controller.previousStep,
+                  child: const Text("Previous"),
                 ),
-              ),
+                const SizedBox(width: 10),
+                ElevatedButton(
+                  onPressed: controller.nextStep,
+                  child: const Text("Next"),
+                ),
+              ],
             )
           ],
-        ));
+        );
+      }),
+    );
   }
 }
