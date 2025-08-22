@@ -29,22 +29,30 @@ class PaymentView extends GetView<PaymentController> {
                   borderRadius: BorderRadius.circular(10),
                 ),
                 child: Row(
-                  spacing: 15,
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        CircleAvatar(
-                          radius: 25,
-                          backgroundColor: kolom,
-                          child: Text(
-                            '1',
-                            style: GoogleFonts.plusJakartaSans(
-                                color: white,
-                                fontWeight: FontWeight.w600,
-                                fontSize: 16),
-                          ),
+                        Row(
+                          children: [
+                            CircleAvatar(
+                              radius: 25,
+                              backgroundColor: kolom,
+                              child: Text(
+                                '1',
+                                style: GoogleFonts.plusJakartaSans(
+                                    color: white,
+                                    fontWeight: FontWeight.w600,
+                                    fontSize: 16),
+                              ),
+                            ),
+                            Container(
+                              width: 20,
+                              height: 1,
+                              color: Colors.black,
+                            ),
+                          ],
                         ),
                         Text('Overview')
                       ],
@@ -52,16 +60,25 @@ class PaymentView extends GetView<PaymentController> {
                     Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        CircleAvatar(
-                          radius: 25,
-                          backgroundColor: kolom,
-                          child: Text(
-                            '2',
-                            style: GoogleFonts.plusJakartaSans(
-                                color: white,
-                                fontWeight: FontWeight.w600,
-                                fontSize: 16),
-                          ),
+                        Row(
+                          children: [
+                            Container(
+                              width: 20,
+                              height: 1,
+                              color: Colors.black,
+                            ),
+                            CircleAvatar(
+                              radius: 25,
+                              backgroundColor: kolom,
+                              child: Text(
+                                '2',
+                                style: GoogleFonts.plusJakartaSans(
+                                    color: white,
+                                    fontWeight: FontWeight.w600,
+                                    fontSize: 16),
+                              ),
+                            ),
+                          ],
                         ),
                         Text('Payment Method')
                       ],
