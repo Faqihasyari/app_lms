@@ -105,7 +105,8 @@ class PaymentView extends GetView<PaymentController> {
                         pay.length,
                         (index) {
                           return Container(
-                            child: Text('asd'),
+                            
+                            child: Text(pay[index]),
                           );
                         },
                       ));
