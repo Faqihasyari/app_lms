@@ -14,86 +14,88 @@ class PaymentView extends GetView<PaymentController> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Obx(() {
-        return Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Container(
-              height: 88,
-              width: 352,
-              decoration: BoxDecoration(
-                color: kolom.withOpacity(0.3),
-                border: Border.all(width: 1, color: ring),
-                borderRadius: BorderRadius.circular(10),
-              ),
-              child: Column(
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: List.generate(steps.length, (index) {
-                      bool isActive = controller.currentStep.value == index;
+        return SafeArea(
+          child: Column(
+            children: [
+              Container(
+                height: 95,
+                width: 352,
+                decoration: BoxDecoration(
+                  color: kolom.withOpacity(0.3),
+                  border: Border.all(width: 1, color: ring),
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: List.generate(steps.length, (index) {
+                        bool isActive = controller.currentStep.value == index;
 
-                      return Row(
-                        children: [
-                          CircleAvatar(
-                            radius: 18,
-                            backgroundColor:
-                                isActive ? Colors.blue : Colors.black,
-                            child: Text(
-                              "${index + 1}",
-                              style: const TextStyle(color: Colors.white),
+                        return Row(
+                          children: [
+                            CircleAvatar(
+                              radius: 18,
+                              backgroundColor:
+                                  isActive ? Colors.blue : Colors.black,
+                              child: Text(
+                                "${index + 1}",
+                                style: const TextStyle(color: Colors.white),
+                              ),
+                            ),
+                            if (index < steps.length - 1)
+                              Container(
+                                width: 40,
+                                height: 2,
+                                color: Colors.grey,
+                              )
+                          ],
+                        );
+                      }),
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: List.generate(steps.length, (index) {
+                        bool isActive = controller.currentStep.value == index;
+                        return SizedBox(
+                          width: 75,
+                          child: Text(
+                            steps[index],
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              fontWeight: isActive
+                                  ? FontWeight.bold
+                                  : FontWeight.normal,
+                              color: isActive ? Colors.blue : Colors.black,
                             ),
                           ),
-                          if (index < steps.length - 1)
-                            Container(
-                              width: 40,
-                              height: 2,
-                              color: Colors.grey,
-                            )
-                        ],
-                      );
-                    }),
+                        );
+                      }),
+                    ),
+                  ],
+                ),
+              ),
+              // label teks di bawah step
+
+              const SizedBox(height: 30),
+              // Tombol kontrol step
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  ElevatedButton(
+                    onPressed: controller.previousStep,
+                    child: const Text("Previous"),
                   ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: List.generate(steps.length, (index) {
-                      bool isActive = controller.currentStep.value == index;
-                      return SizedBox(
-                        width: 90,
-                        child: Text(
-                          steps[index],
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                            fontWeight:
-                                isActive ? FontWeight.bold : FontWeight.normal,
-                            color: isActive ? Colors.blue : Colors.black,
-                          ),
-                        ),
-                      );
-                    }),
+                  const SizedBox(width: 10),
+                  ElevatedButton(
+                    onPressed: controller.nextStep,
+                    child: const Text("Next"),
                   ),
                 ],
-              ),
-            ),
-            const SizedBox(height: 10),
-            // label teks di bawah step
-
-            const SizedBox(height: 30),
-            // Tombol kontrol step
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                ElevatedButton(
-                  onPressed: controller.previousStep,
-                  child: const Text("Previous"),
-                ),
-                const SizedBox(width: 10),
-                ElevatedButton(
-                  onPressed: controller.nextStep,
-                  child: const Text("Next"),
-                ),
-              ],
-            )
-          ],
+              )
+            ],
+          ),
         );
       }),
     );
