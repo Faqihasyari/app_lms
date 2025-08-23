@@ -105,7 +105,10 @@ class PaymentView extends GetView<PaymentController> {
                         pay.length,
                         (index) {
                           return Container(
-                            
+                            margin: EdgeInsets.all(3),
+                            height: 68,
+                            width: 352,
+                            decoration: BoxDecoration(color: ring),
                             child: Text(pay[index]),
                           );
                         },
