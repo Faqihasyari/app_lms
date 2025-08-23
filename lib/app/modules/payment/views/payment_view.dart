@@ -101,18 +101,25 @@ class PaymentView extends GetView<PaymentController> {
                   switch (controller.currentStep.value) {
                     case 0:
                       return Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
                           children: List.generate(
-                        pay.length,
-                        (index) {
-                          return Container(
-                            margin: EdgeInsets.all(3),
-                            height: 68,
-                            width: 352,
-                            decoration: BoxDecoration(color: ring),
-                            child: Text(pay[index]),
-                          );
-                        },
-                      ));
+                            pay.length,
+                            (index) {
+                              return Align(
+                                alignment: Alignment(-1, 0),
+                                child: Container(
+                                  margin: EdgeInsets.all(3),
+                                  height: 68,
+                                  width: double.infinity,
+                                  decoration: BoxDecoration(
+                                      color: ring,
+                                      borderRadius: BorderRadius.all(
+                                          Radius.circular(10))),
+                                  child: Text(pay[index]),
+                                ),
+                              );
+                            },
+                          ));
                     case 1:
                       return Text("Ini halaman Payment Method",
                           style: TextStyle(fontSize: 20));
