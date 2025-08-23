@@ -83,11 +83,32 @@ class PaymentView extends GetView<PaymentController> {
                     ],
                   ),
                 ),
+                SizedBox(
+                  height: 20,
+                ),
+                Align(
+                  alignment: Alignment(-1, 0),
+                  child: Text(
+                    'Select Payment Method',
+                    style: GoogleFonts.plusJakartaSans(
+                        fontWeight: FontWeight.w700, fontSize: 20),
+                  ),
+                ),
+                SizedBox(
+                  height: 10,
+                ),
                 Obx(() {
                   switch (controller.currentStep.value) {
                     case 0:
-                      return Text("Ini halaman Overview",
-                          style: TextStyle(fontSize: 20));
+                      return Column(
+                          children: List.generate(
+                        pay.length,
+                        (index) {
+                          return Container(
+                            child: Text('asd'),
+                          );
+                        },
+                      ));
                     case 1:
                       return Text("Ini halaman Payment Method",
                           style: TextStyle(fontSize: 20));
