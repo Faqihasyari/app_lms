@@ -9,6 +9,7 @@ import '../controllers/payment_controller.dart';
 class PaymentView extends GetView<PaymentController> {
   PaymentView({super.key});
   final List<String> steps = ["Overview", "Payment Method", "Confirmation"];
+  final List<String> pay = ["EasyPaisa", "Add Credit Card", "JazzCash"];
 
   @override
   Widget build(BuildContext context) {
@@ -82,6 +83,21 @@ class PaymentView extends GetView<PaymentController> {
                     ],
                   ),
                 ),
+                Obx(() {
+                  switch (controller.currentStep.value) {
+                    case 0:
+                      return Text("Ini halaman Overview",
+                          style: TextStyle(fontSize: 20));
+                    case 1:
+                      return Text("Ini halaman Payment Method",
+                          style: TextStyle(fontSize: 20));
+                    case 2:
+                      return Text("Ini halaman Confirmation",
+                          style: TextStyle(fontSize: 20));
+                    default:
+                      return Container();
+                  }
+                }),
                 const SizedBox(height: 30),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
