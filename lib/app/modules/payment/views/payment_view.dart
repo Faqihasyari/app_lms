@@ -178,11 +178,14 @@ class PaymentView extends GetView<PaymentController> {
                                       focusedBorder: OutlineInputBorder(
                                         borderSide: BorderSide(color: ring),
                                       ),
-                                      hintText: 'Card Number',
+                                      hintText: 'CVC Number',
                                       border: OutlineInputBorder(
                                         borderRadius: BorderRadius.circular(5),
                                       )),
                                 ),
+                              ),
+                              SizedBox(
+                                width: 10,
                               ),
                               Expanded(
                                 child: TextField(
@@ -195,7 +198,7 @@ class PaymentView extends GetView<PaymentController> {
                                       focusedBorder: OutlineInputBorder(
                                         borderSide: BorderSide(color: ring),
                                       ),
-                                      hintText: 'Card Number',
+                                      hintText: 'Expiry Date',
                                       border: OutlineInputBorder(
                                         borderRadius: BorderRadius.circular(5),
                                       )),
