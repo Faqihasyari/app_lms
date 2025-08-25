@@ -132,8 +132,23 @@ class PaymentView extends GetView<PaymentController> {
                             },
                           ));
                     case 1:
-                      return Text("Ini halaman Payment Method",
-                          style: TextStyle(fontSize: 20));
+                      return Column(
+                        children: [
+                          TextField(
+                            decoration: InputDecoration(
+                                enabledBorder: OutlineInputBorder(
+                                  borderSide: BorderSide(color: ring),
+                                ),
+                                focusedBorder: OutlineInputBorder(
+                                  borderSide: BorderSide(color: ring),
+                                ),
+                                hintText: 'Name On Card',
+                                border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(5),
+                                )),
+                          )
+                        ],
+                      );
                     case 2:
                       return Text("Ini halaman Confirmation",
                           style: TextStyle(fontSize: 20));
