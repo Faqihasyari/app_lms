@@ -133,9 +133,12 @@ class PaymentView extends GetView<PaymentController> {
                           ));
                     case 1:
                       return Column(
+                        spacing: 20,
                         children: [
                           TextField(
                             decoration: InputDecoration(
+                                filled: true,
+                                fillColor: btn.withOpacity(0.2),
                                 enabledBorder: OutlineInputBorder(
                                   borderSide: BorderSide(color: ring),
                                 ),
@@ -146,6 +149,59 @@ class PaymentView extends GetView<PaymentController> {
                                 border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(5),
                                 )),
+                          ),
+                          TextField(
+                            decoration: InputDecoration(
+                                filled: true,
+                                fillColor: btn.withOpacity(0.2),
+                                enabledBorder: OutlineInputBorder(
+                                  borderSide: BorderSide(color: ring),
+                                ),
+                                focusedBorder: OutlineInputBorder(
+                                  borderSide: BorderSide(color: ring),
+                                ),
+                                hintText: 'Card Number',
+                                border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(5),
+                                )),
+                          ),
+                          Row(
+                            children: [
+                              Expanded(
+                                child: TextField(
+                                  decoration: InputDecoration(
+                                      filled: true,
+                                      fillColor: btn.withOpacity(0.2),
+                                      enabledBorder: OutlineInputBorder(
+                                        borderSide: BorderSide(color: ring),
+                                      ),
+                                      focusedBorder: OutlineInputBorder(
+                                        borderSide: BorderSide(color: ring),
+                                      ),
+                                      hintText: 'Card Number',
+                                      border: OutlineInputBorder(
+                                        borderRadius: BorderRadius.circular(5),
+                                      )),
+                                ),
+                              ),
+                              Expanded(
+                                child: TextField(
+                                  decoration: InputDecoration(
+                                      filled: true,
+                                      fillColor: btn.withOpacity(0.2),
+                                      enabledBorder: OutlineInputBorder(
+                                        borderSide: BorderSide(color: ring),
+                                      ),
+                                      focusedBorder: OutlineInputBorder(
+                                        borderSide: BorderSide(color: ring),
+                                      ),
+                                      hintText: 'Card Number',
+                                      border: OutlineInputBorder(
+                                        borderRadius: BorderRadius.circular(5),
+                                      )),
+                                ),
+                              ),
+                            ],
                           )
                         ],
                       );
