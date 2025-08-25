@@ -209,8 +209,12 @@ class PaymentView extends GetView<PaymentController> {
                         ],
                       );
                     case 2:
-                      return Text("Ini halaman Confirmation",
-                          style: TextStyle(fontSize: 20));
+                      return Column(
+                        children: [
+                          Text("Transaction Completed!",
+                              style: TextStyle(fontSize: 20)),
+                        ],
+                      );
                     default:
                       return Container();
                   }
