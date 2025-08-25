@@ -141,16 +141,28 @@ class PaymentView extends GetView<PaymentController> {
                       return Container();
                   }
                 }),
-                const SizedBox(height: 30),
+                Spacer(),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                          backgroundColor: btn,
+                          minimumSize: Size(Get.width * 0.3, 40),
+                          foregroundColor: white,
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadiusGeometry.circular(5))),
                       onPressed: controller.previousStep,
                       child: const Text("Previous"),
                     ),
-                    const SizedBox(width: 10),
+                    Spacer(),
                     ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                          backgroundColor: btn,
+                          minimumSize: Size(Get.width * 0.3, 40),
+                          foregroundColor: white,
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadiusGeometry.circular(5))),
                       onPressed: controller.nextStep,
                       child: const Text("Next"),
                     ),
