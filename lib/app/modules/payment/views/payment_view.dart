@@ -1,5 +1,6 @@
 import 'package:app_lms/theme/theme.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_material_design_icons/flutter_material_design_icons.dart';
 
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -108,14 +109,24 @@ class PaymentView extends GetView<PaymentController> {
                               return Align(
                                 alignment: Alignment(-1, 0),
                                 child: Container(
-                                  margin: EdgeInsets.all(3),
+                                  margin: EdgeInsets.symmetric(vertical: 10),
                                   height: 68,
                                   width: double.infinity,
                                   decoration: BoxDecoration(
-                                      color: ring,
-                                      borderRadius: BorderRadius.all(
-                                          Radius.circular(10))),
-                                  child: Text(pay[index]),
+                                      color: Colors.grey.withOpacity(0.5),
+                                      borderRadius:
+                                          BorderRadius.all(Radius.circular(5))),
+                                  child: Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 20),
+                                    child: Row(
+                                      spacing: 5,
+                                      children: [
+                                        Icon(MdiIcons.plusCircle),
+                                        Text(pay[index]),
+                                      ],
+                                    ),
+                                  ),
                                 ),
                               );
                             },
